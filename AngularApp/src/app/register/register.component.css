@@ -1,0 +1,11 @@
+
+input {
+  width: 100% !important;
+  height: 0% !important;
+  padding: 12px 20px !important;
+  margin: 8px 0 !important;
+  display: inline-block !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+}

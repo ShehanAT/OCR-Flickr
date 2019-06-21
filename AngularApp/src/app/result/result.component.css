@@ -1,0 +1,13 @@
+
+.no-focus-outline {
+  outline: none;
+  color: aqua;
+}
+input {
+    width: 350px; /* You can set the dimensions to whatever you want */
+    height: 330px;
+     margin: auto;    
+    display: block;
+    border-style: solid;
+    
+}

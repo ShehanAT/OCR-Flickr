@@ -1,0 +1,29 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+      <h1>Search for images with text in them:</h1>
+      <form (submit)="sendAndGetImages()">
+        <div class="form-group">
+           <label for="tag">Enter image tag:</label>
+             <input type="text"
+             class="form-control"
+             name="tag"
+             placeholder="Enter image tag"
+             [(ngModel)]="potentialTags.tag">
+      </div>
+      <button type="submit" class="btn btn-primary" >Submit</button>
+      </form> 
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col ml-5" *ngIf="isLoading"><mat-spinner class="ml-5" layout="row" layout-align="center center"></mat-spinner></div>
+                <div class="col"></div>
+                 <div class="col"></div>
+            </div>
+        </div>
+    </div>
+</div>
