@@ -18,7 +18,7 @@ next step = create register form duplicate value error validation for username, 
 next step = show login error on invalid crendentails, make login and register forms pretty
 
 
-ADD LOADING SPINNER TO SEARCH COMPONENT, UPDATE GIT REPO(MANUALLY), UPDATE HEROKU APP
+
 
 
 
