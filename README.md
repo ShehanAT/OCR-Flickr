@@ -19,7 +19,6 @@
 
 
 ### Project Logs:<br>
-new plan: create empty img tags with (click) and add src dynalyy = done<br>
 * setup computer vision api with sample url from app = done<br>
 * config permissions(must login to use api's) = done<br>
 * create register form duplicate value error validation for username, email fields(in the process of remaking register  = done
