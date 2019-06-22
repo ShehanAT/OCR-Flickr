@@ -13,6 +13,7 @@
 * Run ```mongod``` 
 * Run ```npm install```<br>
 * Run ```npm start```<br>
+* Go to ```http://localhost:4200/``` 
 
 
 
