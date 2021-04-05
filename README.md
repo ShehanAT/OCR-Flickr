@@ -1,4 +1,4 @@
-# Capstone Project
+# OCR Flickr Project
 
 ### Overview 
 * Communicates with Flickr Api and Microsoft Cognitive Services Api to allow the user to search images on Flickr then click on one image in order to extract any potential words in it then display it to the user.
