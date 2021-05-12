@@ -95,7 +95,11 @@ module.exports = "<app-search-pics (sendDataEvent)=\"recieveMessage($event)\"></
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<br>\n<br>\n<br>\n<br>\n<div class=\"container\">\n  <div class=\"row\">\n      <h1>Search for images with text in them:</h1>\n      <form (submit)=\"sendAndGetImages()\">\n        <div class=\"form-group\">\n           <label for=\"tag\">Enter image tag:</label>\n             <input type=\"text\"\n             class=\"form-control\"\n             name=\"tag\"\n             placeholder=\"Enter image tag\"\n             [(ngModel)]=\"potentialTags.tag\">\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary\" >Submit</button>\n      </form> \n       <h3>Then click on any image to show extracted text!</h3>\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col\"></div>\n                <div class=\"col\"></div>\n                <div class=\"col ml-5\" *ngIf=\"isLoading\"><mat-spinner class=\"ml-5\" layout=\"row\" layout-align=\"center center\"></mat-spinner></div>\n                <div class=\"col\"></div>\n                 <div class=\"col\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+=======
+module.exports = "<br>\n<br>\n<br>\n<br>\n<div class=\"container\">\n  <div class=\"row\">\n      <h1>Search for images with text in them:</h1>\n      <form (submit)=\"sendAndGetImages()\">\n        <div class=\"form-group\">\n           <label for=\"tag\">Enter image tag:</label>\n             <input type=\"text\"\n             class=\"form-control\"\n             name=\"tag\"\n             placeholder=\"Enter image tag\"\n             [(ngModel)]=\"potentialTags.tag\">\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary\" >Submit</button>\n      </form> \n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col\"></div>\n                <div class=\"col\"></div>\n                <div class=\"col ml-5\" *ngIf=\"isLoading\"><mat-spinner class=\"ml-5\" layout=\"row\" layout-align=\"center center\"></mat-spinner></div>\n                <div class=\"col\"></div>\n                 <div class=\"col\"></div>\n            </div>\n        </div>\n    </div>\n</div>"
+>>>>>>> debf18814a17961536aa23140ebf4a8baa4648ec
 
 /***/ }),
 
@@ -1739,7 +1743,11 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\sheha\OneDrive\Documents\GitHub\OCR-Flickr-master\AngularApp\src\main.ts */"./src/main.ts");
+=======
+module.exports = __webpack_require__(/*! /Users/shehanatukorala/Downloads/capstoneProject-master/AngularApp/src/main.ts */"./src/main.ts");
+>>>>>>> debf18814a17961536aa23140ebf4a8baa4648ec
 
 
 /***/ })

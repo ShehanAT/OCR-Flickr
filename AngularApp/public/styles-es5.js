@@ -598,8 +598,13 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\sheha\OneDrive\Documents\GitHub\OCR-Flickr-master\AngularApp\src\styles.css */"./src/styles.css");
 module.exports = __webpack_require__(/*! C:\Users\sheha\OneDrive\Documents\GitHub\OCR-Flickr-master\AngularApp\bootstrap\dist\css\bootstrap.min.css */"./bootstrap/dist/css/bootstrap.min.css");
+=======
+__webpack_require__(/*! /Users/shehanatukorala/Downloads/capstoneProject-master/AngularApp/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/shehanatukorala/Downloads/capstoneProject-master/AngularApp/bootstrap/dist/css/bootstrap.min.css */"./bootstrap/dist/css/bootstrap.min.css");
+>>>>>>> debf18814a17961536aa23140ebf4a8baa4648ec
 
 
 /***/ })
