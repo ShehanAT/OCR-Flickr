@@ -1,0 +1,78 @@
+<div class="row">
+	<div class="col s12">
+		<div class="card">
+			<div class="card-content white-text">
+				<div class="row">
+					<div class="col s5">
+						<form #userForm="ngForm" 
+						(ngSubmit)="onSubmit(userForm)">
+						<input type="hidden" name="_id" #_id="ngModel"
+						[(ngModel)]="userService.selectedUser._id">
+						<div class="row">
+							<div class="input-field col s12">
+								<input type="text" name="username" 
+								#name="ngModel" 
+								[(ngModel)]="userService.selectedUser.username"
+								placeholder="Enter a username"
+								required>
+								<label>Username: 
+									<label class="red text">*</label>
+								</label>
+							</div>
+							<div class="input-field col s12">
+								<input type="text" name="fullName" 
+								#name="ngModel" 
+								[(ngModel)]="userService.selectedUser.fullName"
+								placeholder="Enter your fullName"
+								required>
+								<label>fullName: 
+									<label class="red text">*</label>
+								</label>
+							</div>
+							<div class="input-field col s12">
+								<input type="text" name="age" 
+								#name="ngModel" 
+								[(ngModel)]="userService.selectedUser.age"
+								placeholder="Enter your age"
+								required>
+								<label>Age: 
+									<label class="red text">*</label>
+								</label>
+							</div>
+								<div class="input-field col s12">
+								<input type="text" name="emailAddress" 
+								#name="ngModel" 
+								[(ngModel)]="userService.selectedUser.emailAddress"
+								placeholder="Enter your email"
+								required>
+								<label>Email: 
+									<label class="red text">*</label>
+								</label>
+							</div>
+								<div class="input-field col s12">
+								<input type="text" name="password" 
+								#name="ngModel" 
+								[(ngModel)]="userService.selectedUser.password"
+								placeholder="Enter a strong password"
+								required>
+								<label>Password: 
+									<label class="red text">*</label>
+								</label>
+							</div>
+							
+						
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<button class="btn btn-custom right" type="button" (click)="resetForm(userForm)">Reset</button>
+								<button class="btn btn-custom right" type="submit" [disabled]="!userForm.valid">Submit</button>
+							</div>
+						</div>
+					</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

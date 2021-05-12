@@ -1,0 +1,51 @@
+<app-search-pics (sendDataEvent)="recieveMessage($event)"></app-search-pics>
+<div class="container center-block" > 
+
+    <div class="ocrWords row"  >
+        <h3>{{ wordList }}</h3>
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col ml-5" *ngIf="isLoading"><mat-spinner class="ml-5" layout="row" layout-align="center center"></mat-spinner></div>
+                <div class="col"></div>
+                 <div class="col"></div>
+            </div>
+        </div>
+   
+        <div class="imageResults" #galleryRef>
+        {{ searchStatus }}
+         <div class="row ml-4 " layout="column" layout-align="center end">
+       
+        <div class="col-md-4" >
+           
+           <input type="image" class="rounded float-center mt-1" (click)="onClick($event)" [hidden]="!image1show" #galleryRef1 />
+            <input type="image" class="rounded float-center mt-1"  (click)="onClick($event)" [hidden]="!image2show" #galleryRef2 />
+           <input type="image" class="rounded float-center mt-1"  (click)="onClick($event)" [hidden]="!image3show" #galleryRef3 />
+             
+        </div>
+        <br>
+         <br>
+        <div class="col-md-4" >
+          
+          <input type="image" class="rounded float-center mt-1"  (click)="onClick($event)" [hidden]="!image4show" #galleryRef4 />
+          <input type="image" class="rounded float-center mt-1" (click)="onClick($event)" [hidden]="!image5show" #galleryRef5 />
+          <input type="image" class="rounded float-center mt-1"  (click)="onClick($event)" [hidden]="!image6show" #galleryRef6 />
+     
+        </div>
+        <br>
+         <br>
+        <div class="col-md-4">
+        
+          <input type="image" class="rounded float-center mt-1"  (click)="onClick($event)" [hidden]="!image7show" #galleryRef7 />
+          <input type="image" class="rounded float-center mt-1"  (click)="onClick($event)" [hidden]="!image8show" #galleryRef8 />
+          <input type="image" class="rounded float-center mt-1"  (click)="onClick($event)" [hidden]="!image9show" #galleryRef9 />
+    
+        </div>
+        <br>
+       </div>
+      </div>
+    </div>
+    
+

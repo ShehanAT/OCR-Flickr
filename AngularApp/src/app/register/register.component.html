@@ -1,0 +1,85 @@
+<br>
+<br>
+<br>
+
+<div class="container">
+ <div class="row">  
+  <div class="col-md-6">
+    <h1>Register</h1> 
+    <p class="lead">If you are already a member please <a routerLink="/login">log in</a></p>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+        <label for="username" class="control-label">Username:</label>
+        <input type="text" class="form-control" formControlName="username" placeholder="Enter username" >
+       
+     
+        <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+        Username already exists</div>
+      
+     
+      
+        
+        <br>
+        <label for="fullName" class="control-label">FullName:  </label>
+        <input type="text" 
+               class="form-control" 
+               name="fullName" 
+               placeholder="Enter fullName"
+               required 
+               formControlName="fullName"
+               required>
+        <div class="text-danger" *ngIf="fullName?.invalid && (fullName.dirty || fullName.touched)">
+              <div *ngIf="fullName?.errors['required']">Fullname is required</div>
+            
+        </div>
+        
+        <label for="emailAddress" class="control-label">Email Address: </label>
+        <input type="text" 
+               class="form-control" 
+               name="emailAddress" 
+               placeholder="Enter Email"
+               required 
+               formControlName="emailAddress"
+               >
+        
+         <div class="text-danger" *ngIf="email?.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email?.errors['required']">Email is required</div>
+             <div *ngIf="email?.errors['email']">Enter valid email</div>
+            
+        </div>
+        <label for="age" class="control-label">Age:</label>
+        <input type="number" 
+               class="form-control" 
+               name="age" 
+               placeholder="Enter Age"
+               required
+               formControlName="age">
+        <div class="text-danger" *ngIf="age?.invalid && (age.dirty || age.touched)">
+              <div *ngIf="age?.errors['required']">Age is required</div>
+            
+        </div>
+        <label for="password" class="control-label">Password:</label>
+        <input type="password"
+                class="form-control"
+               placeholder="Enter new password"
+                formControlName="password">
+             <div class="text-danger" *ngIf="password?.invalid && (password.dirty || password.touched)">
+              <div *ngIf="password?.errors['required']">Password is required</div>
+            
+        </div>
+            <label for="confirmPassword" class="control-label">Confirm Password:</label>
+            <input type="password"
+                   placeholder="confirm Password"
+                   class="form-control"
+                  
+                formControlName="confirmPassword" compare="password"> 
+            <div class="text-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                <div *ngIf="confirmPassword.errors['required']">Confirm password is required</div>
+                <div *ngIf="confirmPassword.errors['compare']">Passwords do not match</div>
+                </div>
+      
+      <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register!</button>
+      </form>   
+     </div>
+    </div>
+</div>
