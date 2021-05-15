@@ -15,7 +15,7 @@ This application can run on all major applications(Window, MacOSX, Ubuntu, Debia
 ### Local Development Usage:
 * Add your Flickr api key and Flickr api secret to ```keys.js``` file in the ```./api/config``` folder, get a key and secret [here](https://www.flickr.com/services/api/keys/apply/)
 * Add your Microsoft Azure Cognitive Services Computer Vision api key to ```keys.js``` file in the ```api/config``` folder, get an api key [here](https://azure.microsoft.com/en-ca/try/cognitive-services/) (Make sure to get a computer vision api key)
-* Run ```mongod``` 
+* Run ```mongod``` on a seperate terminal instance
 * Run ```npm install```(on different tab)<br>
 * Run ```npm start```<br>
 * Go to ```http://localhost:4200/``` 
