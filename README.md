@@ -19,6 +19,7 @@ This application can run on all major applications(Window, MacOSX, Ubuntu, Debia
 * Run ```npm install```(on different tab)<br>
 * Run ```npm start```<br>
 * Go to ```http://localhost:4200/``` 
+
 ### Screenshots:
 ### Search for pictures with the tag 'cars':
 ![Search for pictures with the tag 'cars'](/static/images/screenshot_1.png)
