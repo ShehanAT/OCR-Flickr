@@ -3,7 +3,8 @@ var router = express.Router();
 var jwt = require('express-jwt');
 var auth = jwt({
     secret: "shehan123",
-    userProperty: 'payload'
+    userProperty: 'payload',
+    algorithms: ['HS256']
 });
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
