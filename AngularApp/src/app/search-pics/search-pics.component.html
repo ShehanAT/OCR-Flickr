@@ -4,8 +4,8 @@
 <br>
 <div class="container">
   <div class="row">
-      <h1>Search for images with text in them:</h1>
       <form (submit)="sendAndGetImages()">
+        <h1><img src="assets/icons/1st_icon.png" class="step-icon"/>Search for images with text in them:</h1>       
         <div class="form-group">
            <label for="tag">Enter image tag:</label>
              <input type="text"
@@ -16,7 +16,8 @@
       </div>
       <button type="submit" class="btn btn-primary" >Submit</button>
       </form> 
-       <h3>Then click on any image to show extracted text!</h3>
+      <p ng-bind-html="demo.body|lineBreak"></p>
+      <h1><img src="assets/icons/2nd_icon.png" class="step-icon"/>Then click on any image to show extracted text!</h1>
         <div class="container">
             <div class="row">
                 <div class="col"></div>
@@ -28,3 +29,35 @@
         </div>
     </div>
 </div>
+<script type="application/javascript">
+  (function() {
+  'use strict';
+
+  angular
+    .module('app', [])
+    .config(function($sceProvider) {
+      // Completely disable SCE.  For demonstration purposes only!
+      // Do not use in new projects.
+      $sceProvider.enabled(false);
+     })
+    .controller('DemoCtrl', function() {})
+    .filter('lineBreak', lineBreak);
+
+  lineBreak.$inject = [];
+
+  function lineBreak() {
+    return filterFilter;
+
+    ////////////////
+
+    function filterFilter(text) {
+      if (!text || !text.length) {
+        return text;
+      }
+
+      return text.replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
+    }
+  }
+
+})();
+</script>
