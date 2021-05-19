@@ -11,3 +11,7 @@ input {
     border-style: solid;
     
 }
+
+.center-block {
+  margin-left: 10px;
+}

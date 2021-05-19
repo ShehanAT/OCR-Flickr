@@ -2,7 +2,7 @@
 <br>
 <br>
 <br>
-<div class="container">
+<div class="container search-container">
   <div class="row">
       <form (submit)="sendAndGetImages()">
         <h1><img src="assets/icons/1st_icon.png" class="step-icon"/>Search for images with text in them:</h1>       
@@ -29,35 +29,3 @@
         </div>
     </div>
 </div>
-<script type="application/javascript">
-  (function() {
-  'use strict';
-
-  angular
-    .module('app', [])
-    .config(function($sceProvider) {
-      // Completely disable SCE.  For demonstration purposes only!
-      // Do not use in new projects.
-      $sceProvider.enabled(false);
-     })
-    .controller('DemoCtrl', function() {})
-    .filter('lineBreak', lineBreak);
-
-  lineBreak.$inject = [];
-
-  function lineBreak() {
-    return filterFilter;
-
-    ////////////////
-
-    function filterFilter(text) {
-      if (!text || !text.length) {
-        return text;
-      }
-
-      return text.replace(/(\\r\\n)|([\r\n])/gmi, '<br/>');
-    }
-  }
-
-})();
-</script>
