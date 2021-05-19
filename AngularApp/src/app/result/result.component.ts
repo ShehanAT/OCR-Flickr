@@ -55,7 +55,14 @@ export class ResultComponent implements OnInit {
     this.isLoading = true;
     this.wordList = 'Extracted Words: ';
     var target = event.target || event.srcElement || event.currentTarget;
-    this.imageUrl.tag = target.attributes.id.value;//saving image url in a string var
+    try{
+      this.imageUrl.tag = target.attributes.id.value;//saving image url in a string var
+    }catch(err){
+      this.wordList += 'Image url not found! Please try a different picture...'
+      this.isLoading = false 
+      return 
+    }
+    
     this.apiCall.sendOCRData(this.imageUrl).subscribe((data) => {
         var obj = JSON.parse(data.data);
         try{
@@ -67,7 +74,6 @@ export class ResultComponent implements OnInit {
              }
             }
             this.isLoading = false;
-            console.log(this.wordList)
             if(this.wordList === 'Extracted Words: '){
                 this.wordList += 'No words were found!';
              
