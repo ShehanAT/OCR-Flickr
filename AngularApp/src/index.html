@@ -10,6 +10,8 @@
      <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> -->
     <!-- Compiled and minified JavaScript -->
   
             
@@ -18,6 +20,18 @@
 </head>
 <body>
   <app-root></app-root>
+  <script type="text/javascript"> 
+    console.log("javascript passing")
+    $(document).ready(function(){
+      console.log("passing123")
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $(".modal-trigger").on("click", function(){
+          (".modal1").css("display: block");
+          console.log("passing");
+        });
+        // $('.modal-trigger').leanModal();
+      });
+    </script>
   	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
