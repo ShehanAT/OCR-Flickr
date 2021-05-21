@@ -48,8 +48,8 @@ const routes: Routes = [
     ConfirmEqualValidatorDirective,
     HeaderComponent,
     FooterComponent,
-    CompareValidatorDirective
-
+    CompareValidatorDirective,
+    // NgbModalBackdrop
   ],
   imports: [
     BrowserModule, 
