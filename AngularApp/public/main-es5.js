@@ -108,7 +108,7 @@ module.exports = "<br>\r\n<br>\r\n\r\n<br>\r\n\r\n<br>\r\n<br>\r\n\r\n<div class
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container\">\r\n \r\n <div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n   <h1 class=\"form-signin-heading\">Your Profile</h1>\r\n   <div class=\"form-horizontal\">\r\n    <div class=\"form-group\">\r\n      <p class=\" control-label text-left\"><strong>Username:  </strong><br>\r\n        {{ details?.username }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\"control-label text-left\"><strong>Full Name:  </strong><br>\r\n        {{ details?.fullName }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Email:  </strong><br>\r\n        {{ details?.emailAddress }}</p>\r\n    </div>\r\n     <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Age:  </strong><br>\r\n          {{ details?.age}}</p>\r\n     </div>\r\n     <ng-template #content let-modal>\r\n      <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\" id=\"modal-basic-title\">Profile update</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <form #userUpdateForm=\"ngForm\">\r\n          <div class=\"form-group\">\r\n            <label for=\"username\">Username</label>\r\n            <div class=\"input-group\">\r\n              <input id=\"username\" class=\"form-control\" value=\"{{details?.username}}\" name=\"username\">\r\n            </div>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"emailAddress\">Email</label>\r\n            <div class=\"input-group\">\r\n              <input id=\"emailAddress\" class=\"form-control\" value=\"{{details?.emailAddress}}\" name=\"emailAddress\">\r\n            </div>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"fullName\">Full Name</label>\r\n            <div class=\"input-group\">\r\n              <input id=\"fullName\" class=\"form-control\" value=\"{{details?.fullName}}\" name=\"fullName\">\r\n            </div>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"age\">Age</label>\r\n            <div class=\"input-group\">\r\n              <input id=\"age\" class=\"form-control\" placeholder=\"{{details?.age}}\" name=\"age\">\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"modal.close('Save click')\">Save</button>\r\n      </div>\r\n    </ng-template>\r\n    \r\n    <button class=\"btn btn-lg btn-outline-primary\" (click)=\"open(content)\">Update Profile</button>\r\n    \r\n    <hr>\r\n    <pre>{{ closeResult }}</pre>\r\n    </div>\r\n   </div> \r\n </div>\r\n</div>\r\n\r\n<app-footer></app-footer>\r\n"
+module.exports = "<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container\">\r\n \r\n <div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n   <h1 class=\"form-signin-heading\">Your Profile</h1>\r\n   <div class=\"form-horizontal\">\r\n    \r\n    <div class=\"form-group\">\r\n      <p class=\" control-label text-left\"><strong>Username:  </strong><br>\r\n        {{ user?.username }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\"control-label text-left\"><strong>Full Name:  </strong><br>\r\n        {{ user?.fullName }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Email:  </strong><br>\r\n        {{ user?.emailAddress }}</p>\r\n    </div>\r\n     <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Age:  </strong><br>\r\n          {{ user?.age}}</p>\r\n     </div>\r\n    <button class=\"btn btn-lg btn-outline-primary\" (click)=\"updateUser(user)\">Update Profile</button>\r\n    \r\n    <hr>\r\n    </div>\r\n   </div> \r\n </div>\r\n</div>\r\n\r\n<app-footer></app-footer>\r\n"
 
 /***/ }),
 
@@ -142,6 +142,17 @@ module.exports = "<app-search-pics (sendDataEvent)=\"recieveMessage($event)\"></
 /***/ (function(module, exports) {
 
 module.exports = "<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container search-container\">\r\n  <div class=\"row\">\r\n      <form (submit)=\"sendAndGetImages()\">\r\n        <h1><img src=\"assets/icons/1st_icon.png\" class=\"step-icon\"/>Search for images with text in them:</h1>       \r\n        <div class=\"form-group\">\r\n           <label for=\"tag\">Enter image tag:</label>\r\n             <input type=\"text\"\r\n             class=\"form-control\"\r\n             name=\"tag\"\r\n             placeholder=\"Enter image tag\"\r\n             [(ngModel)]=\"potentialTags.tag\">\r\n      </div>\r\n      <button type=\"submit\" class=\"btn btn-primary\" >Submit</button>\r\n      </form> \r\n      <p ng-bind-html=\"demo.body|lineBreak\"></p>\r\n      <h1><img src=\"assets/icons/2nd_icon.png\" class=\"step-icon\"/>Then click on any image to show extracted text!</h1>\r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col\"></div>\r\n                <div class=\"col\"></div>\r\n                <div class=\"col ml-5\" *ngIf=\"isLoading\"><mat-spinner class=\"ml-5\" layout=\"row\" layout-align=\"center center\"></mat-spinner></div>\r\n                <div class=\"col\"></div>\r\n                 <div class=\"col\"></div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/update-user/update-user.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/update-user/update-user.component.html ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<form [formGroup]=\"updateUserForm\" (ngSubmit=\"onSubmit()\") *ngIf=\"updateUserForm\">\n  <div class=\"card text-center w-50 mx-auto mt-5\">\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"username\" class=\"col-form-label col-sm-2 text-right\">Username:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"text\" formControlName=\"username\" class=\"form-control\" />\n              <div *ngIf=\"updateUserFormData.username.invalid && (updateUserFormData.username.dirty || updateUserFormData.username.touched)\" class=\"alert-danger\">\n                  <span>Username is required!</span>\n              </div>\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">Email:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"text\" formControlName=\"email\" class=\"form-control\" />\n              <div *ngIf=\"updateUserFormData.email.invalid && (updateUserFormData.email.dirty || updateUserFormData.email.touched)\" class=\"alert-danger\">\n                  <span *ngIf=\"updateUserFormData.email.errors.required\">Email is required!</span>\n                  <span *ngIf=\"updateUserFormData.email.errors.email\">Email must be a valid address!</span>\n              </div>\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Fullname:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"text\" formControlName=\"fullName\" class=\"form-control\" />\n            <div *ngIf=\"updateUserFormData.fullName.invalid && (updateUserFormData.fullName.dirty || updateUserFormData.fullName.touched)\" class=\"alert-danger\">\n                <span>Fullname is required!</span>\n            </div>\n        </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"age\" class=\"col-form-label col-sm-2 text-right\">Age:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"number\" formControlName=\"age\" class=\"form-control\" />\n              <div *ngIf=\"updateUserFormData.age.invalid && (updateUserFormData.age.dirty || updateUserFormData.age.touched)\" class=\"alert-danger\">\n                  <span>Age is required!</span>\n              </div>\n          </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"isLoading\" class=\"btn btn-primary mr-2\">Update</button>\n    </div>\n  </div>\n</form>"
 
 /***/ }),
 
@@ -320,7 +331,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
 /* harmony import */ var _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./shared/compare-validator.directive */ "./src/app/shared/compare-validator.directive.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "../node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./update-user/update-user.component */ "./src/app/update-user/update-user.component.ts");
+
 
 
 
@@ -371,6 +384,7 @@ var AppModule = /** @class */ (function () {
                 _header_header_component__WEBPACK_IMPORTED_MODULE_20__["HeaderComponent"],
                 _footer_footer_component__WEBPACK_IMPORTED_MODULE_21__["FooterComponent"],
                 _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_22__["CompareValidatorDirective"],
+                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_24__["UpdateUserComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -385,7 +399,8 @@ var AppModule = /** @class */ (function () {
             providers: [
                 _authentication_service__WEBPACK_IMPORTED_MODULE_13__["AuthenticationService"],
                 _auth_guard_service__WEBPACK_IMPORTED_MODULE_14__["AuthGuardService"],
-                _shared_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"]
+                _shared_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__["NgbModule"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
@@ -771,11 +786,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../authentication.service */ "./src/app/authentication.service.ts");
 /* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "../node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../update-user/update-user.component */ "./src/app/update-user/update-user.component.ts");
 
 
 
 //can import both classes and interfaces in the same import statement
+
 
 
 var ProfileComponent = /** @class */ (function () {
@@ -786,31 +803,30 @@ var ProfileComponent = /** @class */ (function () {
         this.modalService = modalService;
         // this.details = this.auth.getUserDetails()
     }
-    ProfileComponent.prototype.open = function (content) {
-        var _this = this;
-        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
-            _this.closeResult = "Closed with " + result;
-        }, function (reason) {
-            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+    ProfileComponent.prototype.updateUser = function (user) {
+        var ref = this.modalService.open(_update_user_update_user_component__WEBPACK_IMPORTED_MODULE_5__["UpdateUserComponent"], { centered: true });
+        ref.componentInstance.selectedUser = user;
+        ref.result.then(function (yes) {
+            console.log("Submit clicked");
+        }, function (cancel) {
+            console.log('cancel clicked');
         });
     };
-    ProfileComponent.prototype.getDismissReason = function (reason) {
-        // return ''
-        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["ModalDismissReasons"].ESC) {
-            return 'by pressing ESC';
-        }
-        else if (reason == _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["ModalDismissReasons"].BACKDROP_CLICK) {
-            return 'by clicking on a backdrop';
-        }
-        else {
-            return "with: " + reason;
-        }
-    };
+    // private getDismissReason(reason: any): string {
+    //   // return ''
+    //   if (reason === ModalDismissReasons.ESC){
+    //     return 'by pressing ESC';
+    //   }else if (reason == ModalDismissReasons.BACKDROP_CLICK){
+    //     return 'by clicking on a backdrop';
+    //   }else{
+    //     return `with: ${reason}`
+    //   }
+    // }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.authGuard.canActivate();
         this.auth.profile().subscribe(function (user) {
-            _this.details = user;
+            _this.user = user;
         }, function (err) {
             console.error(err);
         });
@@ -1697,6 +1713,9 @@ var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
         this.baseURL = 'http://localhost:3000/api/getUsers';
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json; charset=utf-8' })
+        };
     }
     UserService.prototype.postUser = function (user) {
         return this.http.post(this.baseURL, user);
@@ -1712,8 +1731,14 @@ var UserService = /** @class */ (function () {
             return newUsers;
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (users) { return console.log(users); }));
     };
+    UserService.prototype.updateUser = function (user) {
+        return this.http.put(this.baseURL + "/" + user._id, user, this.httpOptions);
+    };
     UserService.prototype.getUserByUsername = function (uName) {
         return this.http.get(this.baseURL + "/" + uName);
+    };
+    UserService.prototype.getUserById = function (uId) {
+        return this.http.get(this.baseURL + "/" + uId);
     };
     UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1722,6 +1747,95 @@ var UserService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], UserService);
     return UserService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/update-user/update-user.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/update-user/update-user.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VwZGF0ZS11c2VyL3VwZGF0ZS11c2VyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/update-user/update-user.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/update-user/update-user.component.ts ***!
+  \******************************************************/
+/*! exports provided: UpdateUserComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateUserComponent", function() { return UpdateUserComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/user.service */ "./src/app/shared/user.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+
+var UpdateUserComponent = /** @class */ (function () {
+    function UpdateUserComponent(route, userService, formBuilder, router) {
+        this.route = route;
+        this.userService = userService;
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.isLoading = false;
+    }
+    UpdateUserComponent.prototype.ngOnInit = function () {
+        var userId = this.route.snapshot.params['id'];
+        this.setForm(userId);
+    };
+    UpdateUserComponent.prototype.onSubmit = function () {
+        var _this = this;
+        if (this.updateForm.invalid || this.isLoading) {
+            return;
+        }
+        this.isLoading = true;
+        this.userService.updateUser(this.updateForm.value).subscribe(function (x) {
+            _this.isLoading = false;
+            _this.router.navigateByUrl("profile");
+        }, function (error) {
+            _this.isLoading = false;
+        });
+    };
+    Object.defineProperty(UpdateUserComponent.prototype, "editFormData", {
+        get: function () { return this.updateForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    UpdateUserComponent.prototype.setForm = function (userId) {
+        var _this = this;
+        this.userService.getUserById(userId).subscribe(function (x) {
+            _this.selectedUser = x;
+            _this.updateForm = _this.formBuilder.group({
+                id: [_this.selectedUser._id],
+                username: [_this.selectedUser.username, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+                email: [_this.selectedUser.emailAddress, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+                fullName: [_this.selectedUser.fullName, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+                age: [_this.selectedUser.age, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]
+            });
+        });
+    };
+    UpdateUserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-update-user',
+            template: __webpack_require__(/*! raw-loader!./update-user.component.html */ "./node_modules/raw-loader/index.js!./src/app/update-user/update-user.component.html"),
+            styles: [__webpack_require__(/*! ./update-user.component.css */ "./src/app/update-user/update-user.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _shared_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], UpdateUserComponent);
+    return UpdateUserComponent;
 }());
 
 

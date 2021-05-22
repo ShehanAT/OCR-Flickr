@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/toPromise';
@@ -14,6 +14,10 @@ export class UserService {
   selectedUser: User;
   users: User[];
   private baseURL = 'http://localhost:3000/api/getUsers';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8'})
+  };
 
   constructor(private http: HttpClient) { }
   
@@ -34,9 +38,17 @@ export class UserService {
         }),
         tap(users => console.log(users))
         );
-      }
+  }
+
+  updateUser(user: User){
+    return this.http.put(`${this.baseURL}/${user._id}`, user, this.httpOptions)
+  }
+
   getUserByUsername(uName: string){
     return this.http.get<any[]>(`${this.baseURL}/${uName}`);
   }
-  
+
+  getUserById(uId: number){
+    return this.http.get<User>(`${this.baseURL}/${uId}`)
+  }
 }

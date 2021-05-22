@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 import {CommonService} from './common.service';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
@@ -37,6 +38,9 @@ const routes: Routes = [
 ]
 
 @NgModule({
+  entryComponents: [
+    UpdateUserComponent
+  ],
   declarations: [
     AppComponent,
     UserComponent,
@@ -50,6 +54,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     CompareValidatorDirective,
+    UpdateUserComponent,
     // NgbModalBackdrop
   ],
   imports: [
@@ -65,7 +70,8 @@ const routes: Routes = [
   providers: [
     AuthenticationService,
     AuthGuardService,
-    UserService
+    UserService,
+    NgbModule
   ],
   bootstrap: [AppComponent]
 })
