@@ -15,14 +15,12 @@ import { UpdateUserComponent } from '../update-user/update-user.component';
 })
 export class ProfileComponent implements OnInit {
   user: User;//saving user details interface object in variable
-  // 
   
   constructor(
     private auth: AuthenticationService, 
     private authGuard: AuthGuardService, 
     private modalService: NgbModal
   ) { 
-    // this.details = this.auth.getUserDetails()
   }
 
   updateUser(user: User){
@@ -37,17 +35,6 @@ export class ProfileComponent implements OnInit {
         console.log('cancel clicked');
       })
   }
-
-  // private getDismissReason(reason: any): string {
-  //   // return ''
-  //   if (reason === ModalDismissReasons.ESC){
-  //     return 'by pressing ESC';
-  //   }else if (reason == ModalDismissReasons.BACKDROP_CLICK){
-  //     return 'by clicking on a backdrop';
-  //   }else{
-  //     return `with: ${reason}`
-  //   }
-  // }
 
   ngOnInit() {//on start get the details of the user that is currently logged in
     this.authGuard.canActivate();

@@ -321,18 +321,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
-/* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./authentication.service */ "./src/app/authentication.service.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./search-pics/search-pics.component */ "./src/app/search-pics/search-pics.component.ts");
-/* harmony import */ var _result_result_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./result/result.component */ "./src/app/result/result.component.ts");
-/* harmony import */ var _shared_confirm_equal_validator_directive__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./shared/confirm-equal-validator.directive */ "./src/app/shared/confirm-equal-validator.directive.ts");
-/* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./shared/user.service */ "./src/app/shared/user.service.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./shared/compare-validator.directive */ "./src/app/shared/compare-validator.directive.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./update-user/update-user.component */ "./src/app/update-user/update-user.component.ts");
+/* harmony import */ var _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./update-user/update-user.component */ "./src/app/update-user/update-user.component.ts");
+/* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./authentication.service */ "./src/app/authentication.service.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./search-pics/search-pics.component */ "./src/app/search-pics/search-pics.component.ts");
+/* harmony import */ var _result_result_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./result/result.component */ "./src/app/result/result.component.ts");
+/* harmony import */ var _shared_confirm_equal_validator_directive__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./shared/confirm-equal-validator.directive */ "./src/app/shared/confirm-equal-validator.directive.ts");
+/* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./shared/user.service */ "./src/app/shared/user.service.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./shared/compare-validator.directive */ "./src/app/shared/compare-validator.directive.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
@@ -359,32 +359,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_15__["HomeComponent"] },
+    { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"] },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"] },
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"] },
     { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"] },
-    { path: 'result', component: _result_result_component__WEBPACK_IMPORTED_MODULE_17__["ResultComponent"] },
-    { path: 'searchPics', component: _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_16__["SearchPicsComponent"] }
+    { path: 'result', component: _result_result_component__WEBPACK_IMPORTED_MODULE_18__["ResultComponent"] },
+    { path: 'searchPics', component: _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_17__["SearchPicsComponent"] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+            entryComponents: [
+                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_13__["UpdateUserComponent"]
+            ],
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
                 _user_user_component__WEBPACK_IMPORTED_MODULE_9__["UserComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
                 _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_15__["HomeComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
                 _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"],
-                _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_16__["SearchPicsComponent"],
-                _result_result_component__WEBPACK_IMPORTED_MODULE_17__["ResultComponent"],
-                _shared_confirm_equal_validator_directive__WEBPACK_IMPORTED_MODULE_18__["ConfirmEqualValidatorDirective"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_20__["HeaderComponent"],
-                _footer_footer_component__WEBPACK_IMPORTED_MODULE_21__["FooterComponent"],
-                _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_22__["CompareValidatorDirective"],
-                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_24__["UpdateUserComponent"],
+                _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_17__["SearchPicsComponent"],
+                _result_result_component__WEBPACK_IMPORTED_MODULE_18__["ResultComponent"],
+                _shared_confirm_equal_validator_directive__WEBPACK_IMPORTED_MODULE_19__["ConfirmEqualValidatorDirective"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_21__["HeaderComponent"],
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_22__["FooterComponent"],
+                _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_23__["CompareValidatorDirective"],
+                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_13__["UpdateUserComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -394,13 +397,13 @@ var AppModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(routes),
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"],
-                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__["NgbModule"]
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_24__["NgbModule"]
             ],
             providers: [
-                _authentication_service__WEBPACK_IMPORTED_MODULE_13__["AuthenticationService"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_14__["AuthGuardService"],
-                _shared_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
-                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_23__["NgbModule"]
+                _authentication_service__WEBPACK_IMPORTED_MODULE_14__["AuthenticationService"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_15__["AuthGuardService"],
+                _shared_user_service__WEBPACK_IMPORTED_MODULE_20__["UserService"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_24__["NgbModule"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
