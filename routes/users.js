@@ -7,7 +7,9 @@ var db = require('../db.js');
 
 router.get('/', (req, res) => {
 	User.find((err, record) =>{
-		if(!err) { res.send(record); }
+		if(!err) { 
+			res.send(record); 
+		}
 		else { console.log('Error in Retriving Employees :' + JSON.stringify(err, undefined, 2)); }
 	});
 });

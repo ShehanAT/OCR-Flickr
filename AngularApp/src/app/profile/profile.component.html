@@ -32,15 +32,29 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #userUpdateForm="ngForm">
           <div class="form-group">
-            <label for="dateOfBirth">Date of birth</label>
+            <label for="username">Username</label>
             <div class="input-group">
-              <!-- #dp="ngbDatepicker" -->
-              <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker >
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-              </div>
+              <input id="username" class="form-control" value="{{details?.username}}" name="username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="emailAddress">Email</label>
+            <div class="input-group">
+              <input id="emailAddress" class="form-control" value="{{details?.emailAddress}}" name="emailAddress">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <div class="input-group">
+              <input id="fullName" class="form-control" value="{{details?.fullName}}" name="fullName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <div class="input-group">
+              <input id="age" class="form-control" placeholder="{{details?.age}}" name="age">
             </div>
           </div>
         </form>
@@ -53,9 +67,7 @@
     <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Update Profile</button>
     
     <hr>
-    
     <pre>{{ closeResult }}</pre>
-
     </div>
    </div> 
  </div>

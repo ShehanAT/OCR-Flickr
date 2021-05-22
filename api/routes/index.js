@@ -36,34 +36,8 @@ router.get('/getUsers/:uName', function(req, res, next){
              console.log(result);
              return res.json(result);
          });
-//        .exec((err, users) =>{
-//             console.log("passing");
-//         let userData = [];
-//         users.forEach((user) =>{
-//             userData.push({
-//                 username: user.username
-//             });
-//         });
-//         console.log(userData);
-//        console.log(req.params.uName);
-//         userData.forEach((user) => {
-//             if(user.username === req.params.uName){
-//                  res.setHeader('Content-Type', 'application/json');
-//                  return res.end(JSON.stringify({ uniqueUsername: true}));
-//             }
-//         })
-//       
-        //user found
-       
-//    }).then((data) =>{
-//         console.log(data);
-//         res.status(200);
-//         return null;
-//     })
-//    return null;
-})
-//router.get('/getUsers', ctrlGetAllUsers);
 
+})
 router.post('/register', ctrlAuthRegister);
 
 

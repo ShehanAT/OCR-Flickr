@@ -7,7 +7,7 @@ const cors = require('cors');
 const logger = require('morgan');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-
+const session = require('express-session')
 require('./api/models/db');
 require('./api/config/passport');
 
@@ -19,6 +19,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.set('trust proxy', 1) //trust first proxy 
+app.use(session({
+    secret: 'capstone',
+    resave: false, 
+    saveUninitialized: true,
+    cookie: { secure: true }
+}))
 //uncomment after placing favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico));
 app.use(logger('dev'));

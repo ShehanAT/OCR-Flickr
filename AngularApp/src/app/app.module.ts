@@ -24,6 +24,7 @@ import { UserService } from './shared/user.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CompareValidatorDirective } from './shared/compare-validator.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
@@ -58,7 +59,8 @@ const routes: Routes = [
     HttpClientModule, 
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgbModule
   ],
   providers: [
     AuthenticationService,

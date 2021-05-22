@@ -2,21 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, UserDetails } from '../authentication.service';
 //can import both classes and interfaces in the same import statement
 import { AuthGuardService } from '../auth-guard.service';
-import { NgbModal, ModalDismissReasons, NgbDate, NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { User } from '../shared/user.model';
 import { from } from 'rxjs';
+import { UserUpdate } from '../user/user-update.component';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
+
+
+
 export class ProfileComponent implements OnInit {
-  closeResult = ''
-  details: User;//saving user details interface object in variable
+  closeResult: string;
+  details: UserDetails;//saving user details interface object in variable
   // 
   
-  constructor(private auth: AuthenticationService, private authGuard: AuthGuardService, private modalService: NgbModal) { }
+  constructor(
+    private auth: AuthenticationService, 
+    private authGuard: AuthGuardService, 
+    private modalService: NgbModal
+  ) { 
+    // this.details = this.auth.getUserDetails()
+  }
 
   open(content){
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
