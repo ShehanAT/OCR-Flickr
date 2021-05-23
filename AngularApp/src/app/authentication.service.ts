@@ -33,9 +33,12 @@ export interface TokenPayload{
 
 @Injectable()
 export class AuthenticationService {
-    private token: string;
+
+    token: string 
     
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router) {
+       
+     }
     private saveToken(token: string): void{
         localStorage.setItem('mean-token', token);
         this.token = token;
@@ -102,7 +105,6 @@ export class AuthenticationService {
     }
     
     public login(user: TokenPayload): Observable<any>{
-        console.log(user)
         return this.request('post', 'login', user);//sending login post request to request()
     }
     

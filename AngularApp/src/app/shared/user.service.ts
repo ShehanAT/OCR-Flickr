@@ -2,50 +2,46 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, tap } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+
 import 'rxjs/add/operator/toPromise';
 import { LoginModel } from '../login/login.model'
 import { User } from './user.model';
-import { TokenPayload } from '../authentication.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private currentUserSubject: BehaviorSubject<User>;
-  currentUser: Observable<User>
+  
   selectedUser: User;
   users: User[];
   private baseURL = 'http://localhost:3000'
   private usersURL = 'http://localhost:3000/api/getUsers';
+  private apiURL = 'http://localhost:3000/api/'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'})
   };
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentItem')))
-    this.currentUser = this.currentUserSubject.asObservable();
+  
   }
   
-  public get currentUserObject(): User{
-    return this.currentUserSubject.value;
-  }
 
-  login(loginModel: TokenPayload): Observable<any>{
-    console.log(loginModel)
-    sessionStorage.removeItem('currentUser');
+  // login(loginModel: TokenPayload): Observable<any>{
+  //   console.log(loginModel)
+  //   sessionStorage.removeItem('currentUser');
 
-    return this.http.post<any>(`${this.baseURL}/api/login`, loginModel, this.httpOptions)
-      .pipe(map(user => {
-        sessionStorage.setItem('currentUser', JSON.stringify(user));
-        console.log(JSON.stringify(user))
-        console.log(this.currentUserSubject.value);
+  //   return this.http.post<any>(`${this.baseURL}/api/login`, loginModel, this.httpOptions)
+  //     .pipe(map(user => {
+  //       sessionStorage.setItem('currentUser', JSON.stringify(user));
+  //       console.log(JSON.stringify(user))
+  //       console.log(this.currentUserSubject.value);
 
-        this.currentUserSubject.next(user);
-        return user;
-      }))
-  }
+  //       this.currentUserSubject.next(user);
+  //       return user;
+  //     }))
+  // }
 
   postUser(user: User){
   	return this.http.post(this.usersURL, user);
@@ -74,6 +70,6 @@ export class UserService {
   }
 
   getUserById(uId: number){
-    return this.http.get<User>(`${this.usersURL}/${uId}`)
+    return this.http.get<User>(`${this.apiURL}/getUserById/${uId}`)
   }
 }

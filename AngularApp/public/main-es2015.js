@@ -527,6 +527,7 @@ let AuthenticationService = class AuthenticationService {
         return this.request('post', 'register', user); //sending register post request to request()
     }
     login(user) {
+        console.log(user);
         return this.request('post', 'login', user); //sending login post request to request()
     }
     profile() {
@@ -730,19 +731,21 @@ let LoginComponent = class LoginComponent {
     ngOnInit() {
     }
     login() {
-        this.userService.login(this.credentials).subscribe(x => {
-            this.router.navigateByUrl('/profile');
-        }, (err) => {
-            console.error(err);
-            this.errorMessage = 'Invalid Credentials, Please Try Again!';
-        });
-        // this.auth.login(this.credentials).subscribe(() => {
-        //     this.router.navigateByUrl('/profile');//redirect to profile
-        //     //once user authenticated 
+        // this.userService.login(this.credentials).subscribe(x => {
+        //   this.router.navigateByUrl('/profile')
         // }, (err) => {
-        //     console.error(err);//else print err message
-        //     this.errorMessage = 'Invalid Credentials, Try again!';
+        //     console.error(err);
+        //     this.errorMessage = 'Invalid Credentials, Please Try Again!';
         // });
+        this.auth.login(this.credentials).subscribe((user) => {
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            console.log(JSON.stringify(user));
+            this.router.navigateByUrl('/profile'); //redirect to profile
+            //once user authenticated 
+        }, (err) => {
+            console.error(err); //else print err message
+            this.errorMessage = 'Invalid Credentials, Try again!';
+        });
     }
 };
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

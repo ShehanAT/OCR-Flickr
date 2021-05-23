@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateUser(user: User){
-    const ref = this.modalService.open(UpdateUserComponent, { centered: true});
+    const ref = this.modalService.open(UpdateUserComponent, { centered: true, windowClass : "update-user-modal"});
     ref.componentInstance.selectedUser = user;
 
     ref.result.then((yes) =>{
@@ -33,12 +33,13 @@ export class ProfileComponent implements OnInit {
 
     },
       (cancel) => {
-        console.log('cancel clicked');
+        console.log('Cancel clicked');
       })
   }
 
   ngOnInit() {//on start get the details of the user that is currently logged in
     // this.authGuard.canActivate();
+    
     this.auth.profile().subscribe(user => {
         this.user = user;
     }, (err) => {//if no login return err message

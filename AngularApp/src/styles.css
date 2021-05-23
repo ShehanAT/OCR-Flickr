@@ -89,3 +89,10 @@ a.action-btn:hover{
     cursor: pointer;
 }
 
+.update-user-modal{
+    max-width: calc(100vw - 600px);
+}
+
+.update-user-modal .modal-dialog {
+    max-height: -webkit-fill-available;
+}    

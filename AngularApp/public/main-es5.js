@@ -535,6 +535,7 @@ var AuthenticationService = /** @class */ (function () {
         return this.request('post', 'register', user); //sending register post request to request()
     };
     AuthenticationService.prototype.login = function (user) {
+        console.log(user);
         return this.request('post', 'login', user); //sending login post request to request()
     };
     AuthenticationService.prototype.profile = function () {
@@ -744,19 +745,21 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.login = function () {
         var _this = this;
-        this.userService.login(this.credentials).subscribe(function (x) {
-            _this.router.navigateByUrl('/profile');
-        }, function (err) {
-            console.error(err);
-            _this.errorMessage = 'Invalid Credentials, Please Try Again!';
-        });
-        // this.auth.login(this.credentials).subscribe(() => {
-        //     this.router.navigateByUrl('/profile');//redirect to profile
-        //     //once user authenticated 
+        // this.userService.login(this.credentials).subscribe(x => {
+        //   this.router.navigateByUrl('/profile')
         // }, (err) => {
-        //     console.error(err);//else print err message
-        //     this.errorMessage = 'Invalid Credentials, Try again!';
+        //     console.error(err);
+        //     this.errorMessage = 'Invalid Credentials, Please Try Again!';
         // });
+        this.auth.login(this.credentials).subscribe(function (user) {
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            console.log(JSON.stringify(user));
+            _this.router.navigateByUrl('/profile'); //redirect to profile
+            //once user authenticated 
+        }, function (err) {
+            console.error(err); //else print err message
+            _this.errorMessage = 'Invalid Credentials, Try again!';
+        });
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

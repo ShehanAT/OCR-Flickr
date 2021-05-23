@@ -26,8 +26,25 @@ router.get('/getUsers', function(req, res, next){
     console.log('passing getUsers route');
     res.json({'passing': 'success'});
 })
+router.get('/getUserById/:uId', function(req, res, next){
+    User.find({}, function(err, users){
+        let userData = [];
+        users.forEach((user) => {
+            userData.push({
+                user: user
+            });
+        });
+        console.log(userData);
+        let result = userData.filter(user => {
+            return user.user._id  == req.params.uId
+        });
+        console.log(result);
+        return res.json(result)
+    });
+});
+
 router.get('/getUsers/:uName', function(req, res, next){
-        console.log('passing getUsers/:uName route');
+        console.log(req)
          User.find({}, function(err, users){
             let userData = [];
              users.forEach((user) => {
