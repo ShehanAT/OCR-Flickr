@@ -102,6 +102,7 @@ export class AuthenticationService {
     }
     
     public login(user: TokenPayload): Observable<any>{
+        console.log(user)
         return this.request('post', 'login', user);//sending login post request to request()
     }
     

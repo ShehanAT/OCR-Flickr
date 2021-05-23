@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 import { LoginModel } from '../login/login.model'
 import { User } from './user.model';
-
+import { TokenPayload } from '../authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  login(loginModel: LoginModel){
+  login(loginModel: TokenPayload): Observable<any>{
     console.log(loginModel)
     sessionStorage.removeItem('currentUser');
 

@@ -82,10 +82,10 @@ module.exports.register = function(req, res, next){
 };
 
 module.exports.login = function(req, res, next){
-    console.log(req)
+    console.log(req.body) 
     passport.authenticate('local', function(err, user, info){
         var token; 
-        console.log(user)
+        // console.log(user)
         //If Passport throws/catches an error
         if(err){
             res.status(404).json(err);
@@ -93,10 +93,12 @@ module.exports.login = function(req, res, next){
         }
         //if a user is found
         if(user){
+            console.log(user)
             token = user.generateJwt();
             res.status(200);
             res.json({//returning the json web token in json format
-                "token": token
+                "token": token,
+                "user": user
             });
         }else{
             //if user is not found
