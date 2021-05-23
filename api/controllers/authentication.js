@@ -21,24 +21,7 @@ module.exports.getAllUsers = function(req, res, next){
 })
 }
 module.exports.checkUsernameNotTaken = function(req, res, next){
-//    const username = req.;
-//    User.findOne({username: username})
-//        .then(user => {
-//            if(!user){
-//                return res.json({
-//                    usernameNotTaken: true
-//                });
-//            }else{
-//                return res.json({
-//                    usernameNotTaken: false
-//                })
-//            }
-//        })
-//        .catch(error => {
-//            res.json({
-//                usernameNotTaken: true
-//            })
-//        });
+
 }
 
 module.exports.getUserByUsername = 
@@ -99,9 +82,10 @@ module.exports.register = function(req, res, next){
 };
 
 module.exports.login = function(req, res, next){
+    console.log(req)
     passport.authenticate('local', function(err, user, info){
         var token; 
-        
+        console.log(user)
         //If Passport throws/catches an error
         if(err){
             res.status(404).json(err);

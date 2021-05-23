@@ -19,7 +19,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private auth: AuthenticationService, 
     private authGuard: AuthGuardService, 
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) { 
   }
 
@@ -37,7 +38,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {//on start get the details of the user that is currently logged in
-    this.authGuard.canActivate();
+    // this.authGuard.canActivate();
     this.auth.profile().subscribe(user => {
         this.user = user;
     }, (err) => {//if no login return err message

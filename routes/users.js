@@ -6,6 +6,7 @@ var mongojs = require('mongojs');
 var db = require('../db.js');
 
 router.get('/', (req, res) => {
+	console.log("passing user index route");
 	User.find((err, record) =>{
 		if(!err) { 
 			res.send(record); 

@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build & concurrently --kill-others \"node ./bin/www\" \"npm run serve\"",
+    "start": "npm run build & concurrently --kill-others \"nodemon ./bin/www\" \"npm run serve\"",
     "serve": "cd AngularApp && ng serve --proxy-config proxy.conf.json",
     "build": "cd AngularApp && ng build --output-path=public",
     "test": "ng test",

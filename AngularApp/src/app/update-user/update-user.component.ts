@@ -17,6 +17,7 @@ export class UpdateUserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot)
     const userId = this.route.snapshot.params['id'];
     this.setForm(userId)
   }
