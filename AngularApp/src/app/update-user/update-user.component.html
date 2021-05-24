@@ -1,5 +1,5 @@
 
-<form [formGroup]="updateUserForm" ngSubmit="onSubmit()" *ngIf="updateUserForm">
+<form [formGroup]="updateUserForm" (submit)="onSubmit()" *ngIf="updateUserForm">
   <div class="">
     <!--  text-center w-50 mx-auto mt-5 -->
     <div class="card-header bg-primary text-white">
@@ -9,7 +9,8 @@
       <div class="form-group row d-flex justify-content-center align-items-center">
           <label for="username" class="col-form-label col-sm-2 text-right">Username:</label>
           <div class="col-sm-5">
-              <input type="text" formControlName="username" class="form-control" value="{{selectedUser[0]['user']['username']}}"/>
+              <input type="text" formControlName="username" class="form-control" value="{{selectedUser[0]['user']['username']}}" />
+              <!-- [(ngModel)]=selectedUser.username -->
               <div *ngIf="updateUserFormData.username.invalid && (updateUserFormData.username.dirty || updateUserFormData.username.touched)" class="alert-danger">
                   <span>Username is required!</span>
               </div>
@@ -18,7 +19,8 @@
       <div class="form-group row d-flex justify-content-center align-items-center">
           <label for="email" class="col-form-label col-sm-2 text-right">Email:</label>
           <div class="col-sm-5">
-              <input type="text" formControlName="email" class="form-control" value="{{selectedUser[0]['user']['emailAddress']}}"/>
+              <input type="text" formControlName="email" class="form-control" value="{{selectedUser[0]['user']['emailAddress']}}" name="emailAddress"/>
+              <!-- [(ngModel)]=selectedUser.emailAddress -->
               <div *ngIf="updateUserFormData.email.invalid && (updateUserFormData.email.dirty || updateUserFormData.email.touched)" class="alert-danger">
                   <span *ngIf="updateUserFormData.email.errors.required">Email is required!</span>
                   <span *ngIf="updateUserFormData.email.errors.email">Email must be a valid address!</span>
@@ -28,7 +30,8 @@
       <div class="form-group row d-flex justify-content-center align-items-center">
         <label for="fullName" class="col-form-label col-sm-2 text-right">Fullname:</label>
         <div class="col-sm-5">
-            <input type="text" formControlName="fullName" class="form-control" value="{{selectedUser[0]['user']['fullName']}}"/>
+            <input type="text" formControlName="fullName" class="form-control" value="{{selectedUser[0]['user']['fullName']}}" name="fullName"/>
+            <!-- [(ngModel)]="selectedUser.fullName" -->
             <div *ngIf="updateUserFormData.fullName.invalid && (updateUserFormData.fullName.dirty || updateUserFormData.fullName.touched)" class="alert-danger">
                 <span>Fullname is required!</span>
             </div>
@@ -37,7 +40,8 @@
       <div class="form-group row d-flex justify-content-center align-items-center">
           <label for="age" class="col-form-label col-sm-2 text-right">Age:</label>
           <div class="col-sm-5">
-              <input type="number" formControlName="age" class="form-control" value="{{selectedUser[0]['user']['age']}}"/>
+              <input type="number" formControlName="age" class="form-control" value="{{selectedUser[0]['user']['age']}}" name="age"/>
+              <!-- [(ngModel)]="selectedUser.age" -->
               <div *ngIf="updateUserFormData.age.invalid && (updateUserFormData.age.dirty || updateUserFormData.age.touched)" class="alert-danger">
                   <span>Age is required!</span>
               </div>
@@ -45,7 +49,8 @@
       </div>
     </div>
     <div class="card-footer">
-      <button [disabled]="isLoading" class="btn btn-primary mr-2">Update</button>
+      <button [disabled]="isLoading" class="btn btn-primary mr-2" type="submit">Update</button>
+      <button [disabled]="isLoading" class="btn btn-danger mr-2" (click)="close()">Cancel</button>
     </div>
   </div>
 </form>
