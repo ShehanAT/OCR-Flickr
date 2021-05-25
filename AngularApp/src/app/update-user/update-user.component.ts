@@ -32,7 +32,7 @@ export class UpdateUserComponent implements OnInit {
     this.updateUserForm = this.formBuilder.group({
       _id: [this.selectedUser._id],
       username: [this.selectedUser.username, Validators.required],
-      email: [this.selectedUser.emailAddress, Validators.required],
+      emailAddress: [this.selectedUser.emailAddress, Validators.required],
       fullName: [this.selectedUser.fullName, Validators.required],
       age: [this.selectedUser.age, Validators.required]
     });

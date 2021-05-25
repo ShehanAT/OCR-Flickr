@@ -5,6 +5,7 @@ var { User } = require('../api/models/user');
 var mongojs = require('mongojs');
 var db = require('../db.js');
 
+
 router.get('/', (req, res) => {
 	console.log("passing user index route");
 	User.find((err, record) =>{
@@ -48,24 +49,29 @@ router.put('/:id', (req, res) => {
 		fullname: req.body.fullName,
 		age: req.body.age,
 		emailAddress: req.body.emailAddress,
-		password: req.body.password
+		// password: req.body.password
 	};
+	// console.log(user)
+	// console.log(req.params.id)
+	console.log(User.find())
 	User.findById(req.params.id)
 	.update(req.body)
 	.exec((err, record) => {
 		if(err){
+			console.log('err!')
 			err.status = 400;
 			console.log('Error in User Update : ' + JSON.stringify(err, undefined, 2));
 		}
 		User.findById(req.params.id)
 		.exec((err, record) => {
 			if(err){
+				console.log('second err!')
 				console.log('Error in Finding User Update : ' + JSON.stringify(err, undefined, 2));
 			}
 			res.send(record);
 		})
 
-		//res.send(record);//does not return updated body
+	res.send(record);//does not return updated body
 	});
 });
 
