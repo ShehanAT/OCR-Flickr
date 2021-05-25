@@ -19,7 +19,9 @@ export class UpdateUserComponent implements OnInit {
   ngOnInit() {
     try{
       const userId = JSON.parse(sessionStorage.getItem('currentUser'))["user"]["_id"]
-      this.setForm(userId)
+      this.userService.getUserById(userId).subscribe(x => {
+        this.selectedUser = x[0]['user']
+      });
     }
     catch(err){
       console.log(err);
@@ -27,9 +29,14 @@ export class UpdateUserComponent implements OnInit {
   }
 
   onSubmit(){
-
+    this.updateUserForm = this.formBuilder.group({
+      _id: [this.selectedUser._id],
+      username: [this.selectedUser.username, Validators.required],
+      email: [this.selectedUser.emailAddress, Validators.required],
+      fullName: [this.selectedUser.fullName, Validators.required],
+      age: [this.selectedUser.age, Validators.required]
+    });
     if(this.updateUserForm.invalid || this.isLoading){
-      console.log(this.updateUserForm)
       return ;
     }
     this.isLoading = true;
@@ -42,21 +49,13 @@ export class UpdateUserComponent implements OnInit {
       });
   }
 
-  get updateUserFormData() { 
-    return this.updateUserForm.controls;
-   }
+  // get updateUserFormData() { 
+  //   return this.updateUserForm.controls;
+  //  }
 
   private setForm(userId: number){
-    this.userService.getUserById(userId).subscribe(x => {
-    this.selectedUser = x 
-    this.updateUserForm = this.formBuilder.group({
-      _id: [this.selectedUser._id],
-      username: [this.selectedUser.username, Validators.required],
-      email: [this.selectedUser.emailAddress, Validators.required],
-      fullName: [this.selectedUser.fullName, Validators.required],
-      age: [this.selectedUser.age, Validators.required]
-    });
-  });
+  
+   
   }
 
 }
