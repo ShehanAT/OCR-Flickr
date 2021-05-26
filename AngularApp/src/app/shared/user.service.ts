@@ -46,9 +46,10 @@ export class UserService {
   }
 
   updateUser(user: User){
-    this.auth.profile().subscribe(user => {
-      return this.http.put(`${this.apiURL}/${user._id}`, user) 
-    })
+    return this.http.put(`${this.apiURL}/${user._id}`, user) 
+    // this.auth.profile().subscribe(user => {
+    //   return this.http.put(`${this.apiURL}/${user._id}`, user) 
+    // })
   }
 
   getUserByUsername(uName: string){

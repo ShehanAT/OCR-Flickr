@@ -152,7 +152,7 @@ module.exports = "<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container search-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<form #updateUserForm=\"ngForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"\">\n    <!--  text-center w-50 mx-auto mt-5 -->\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"username\" class=\"col-form-label col-sm-2 text-right\">Username:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"selectedUser.username\" #username=\"ngModel\"/>\n              <div *ngIf=\"updateUserFormData.username.invalid && (updateUserFormData.username.dirty || updateUserFormData.username.touched)\" class=\"alert-danger\">\n                  <span>Username is required!</span>\n              </div>\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">Email:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"text\" class=\"form-control\" name=\"emailAddress\" #emailAddress=\"ngModal\" [(ngModel)]=\"selectedUser.emailAddress\" />\n              <!-- [(ngModel)]=selectedUser.emailAddress -->\n              <div *ngIf=\"updateUserFormData.email.invalid && (updateUserFormData.email.dirty || updateUserFormData.email.touched)\" class=\"alert-danger\">\n                  <span *ngIf=\"updateUserFormData.email.errors.required\">Email is required!</span>\n                  <span *ngIf=\"updateUserFormData.email.errors.email\">Email must be a valid address!</span>\n              </div>\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Fullname:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"text\" class=\"form-control\" name=\"fullName\" #fullName=\"ngModel\" [(ngModel)]=\"selectedUser.fullName\" />\n            <!-- [(ngModel)]=\"selectedUser.fullName\" -->\n            <div *ngIf=\"updateUserFormData.fullName.invalid && (updateUserFormData.fullName.dirty || updateUserFormData.fullName.touched)\" class=\"alert-danger\">\n                <span>Fullname is required!</span>\n            </div>\n        </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"age\" class=\"col-form-label col-sm-2 text-right\">Age:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"number\" class=\"form-control\" name=\"age\" #age=\"ngModel\" [(ngModel)]=\"selectedUser.age\" />\n              <!-- [(ngModel)]=\"selectedUser.age\" -->\n              <div *ngIf=\"updateUserFormData.age.invalid && (updateUserFormData.age.dirty || updateUserFormData.age.touched)\" class=\"alert-danger\">\n                  <span>Age is required!</span>\n              </div>\n          </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"isLoading\" class=\"btn btn-primary mr-2\" type=\"submit\">Update</button>\n      <button [disabled]=\"isLoading\" class=\"btn btn-danger mr-2\" (click)=\"close()\">Cancel</button>\n    </div>\n  </div>\n</form>\n"
+module.exports = "\n<form #updateUserForm=\"ngForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"\">\n    <!--  text-center w-50 mx-auto mt-5 -->\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"username\" class=\"col-form-label col-sm-2 text-right\">Username:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"selectedUser.username\" #username=\"ngModel\"/>\n              <!-- <div *ngIf=\"updateUserFormData.username.invalid && (updateUserFormData.username.dirty || updateUserFormData.username.touched)\" class=\"alert-danger\">\n                  <span>Username is required!</span>\n              </div> -->\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">Email:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"text\" class=\"form-control\" name=\"emailAddress\" #emailAddress=\"ngModel\" [(ngModel)]=\"selectedUser.emailAddress\" />\n              <!-- [(ngModel)]=selectedUser.emailAddress -->\n              <!-- <div *ngIf=\"updateUserFormData.email.invalid && (updateUserFormData.email.dirty || updateUserFormData.email.touched)\" class=\"alert-danger\">\n                  <span *ngIf=\"updateUserFormData.email.errors.required\">Email is required!</span>\n                  <span *ngIf=\"updateUserFormData.email.errors.email\">Email must be a valid address!</span>\n              </div> -->\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Fullname:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"text\" class=\"form-control\" name=\"fullName\" #fullName=\"ngModel\" [(ngModel)]=\"selectedUser.fullName\" />\n            <!-- [(ngModel)]=\"selectedUser.fullName\" -->\n            <!-- <div *ngIf=\"updateUserFormData.fullName.invalid && (updateUserFormData.fullName.dirty || updateUserFormData.fullName.touched)\" class=\"alert-danger\">\n                <span>Fullname is required!</span>\n            </div> -->\n        </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"age\" class=\"col-form-label col-sm-2 text-right\">Age:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"number\" class=\"form-control\" name=\"age\" #age=\"ngModel\" [(ngModel)]=\"selectedUser.age\" />\n              <!-- [(ngModel)]=\"selectedUser.age\" -->\n              <!-- <div *ngIf=\"updateUserFormData.age.invalid && (updateUserFormData.age.dirty || updateUserFormData.age.touched)\" class=\"alert-danger\">\n                  <span>Age is required!</span>\n              </div> -->\n          </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"isLoading\" class=\"btn btn-primary mr-2\" type=\"submit\">Update</button>\n      <button [disabled]=\"isLoading\" class=\"btn btn-danger mr-2\" (click)=\"close()\">Cancel</button>\n    </div>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -1658,35 +1658,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/toPromise */ "./node_modules/rxjs-compat/_esm2015/add/operator/toPromise.js");
-/* harmony import */ var rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../authentication.service */ "./src/app/authentication.service.ts");
+/* harmony import */ var rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/toPromise */ "./node_modules/rxjs-compat/_esm2015/add/operator/toPromise.js");
+/* harmony import */ var rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rxjs_add_operator_toPromise__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
 
 
 let UserService = class UserService {
-    constructor(http) {
+    constructor(http, auth) {
         this.http = http;
+        this.auth = auth;
         this.baseURL = 'http://localhost:3000';
         this.usersURL = 'http://localhost:3000/api/getUsers';
-        this.apiURL = 'http://localhost:3000/api/';
+        this.apiURL = 'http://localhost:3000/api/users';
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' })
         };
     }
-    // login(loginModel: TokenPayload): Observable<any>{
-    //   console.log(loginModel)
-    //   sessionStorage.removeItem('currentUser');
-    //   return this.http.post<any>(`${this.baseURL}/api/login`, loginModel, this.httpOptions)
-    //     .pipe(map(user => {
-    //       sessionStorage.setItem('currentUser', JSON.stringify(user));
-    //       console.log(JSON.stringify(user))
-    //       console.log(this.currentUserSubject.value);
-    //       this.currentUserSubject.next(user);
-    //       return user;
-    //     }))
-    // }
     postUser(user) {
         return this.http.post(this.usersURL, user);
     }
@@ -1701,7 +1692,10 @@ let UserService = class UserService {
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(users => console.log(users)));
     }
     updateUser(user) {
-        return this.http.put(`${this.usersURL}/${user._id}`, user, this.httpOptions);
+        return this.http.put(`${this.apiURL}/${user._id}`, user);
+        // this.auth.profile().subscribe(user => {
+        //   return this.http.put(`${this.apiURL}/${user._id}`, user) 
+        // })
     }
     getUserByUsername(uName) {
         return this.http.get(`${this.usersURL}/${uName}`);
@@ -1714,7 +1708,7 @@ UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"]])
 ], UserService);
 
 
@@ -1763,15 +1757,22 @@ let UpdateUserComponent = class UpdateUserComponent {
     ngOnInit() {
         try {
             const userId = JSON.parse(sessionStorage.getItem('currentUser'))["user"]["_id"];
-            this.setForm(userId);
+            this.userService.getUserById(userId).subscribe(x => {
+                this.selectedUser = x[0]['user'];
+            });
         }
         catch (err) {
             console.log(err);
         }
     }
-    onSubmit(updateUserForm) {
-        console.log(this.updateUserForm);
-        this.updateUserForm = updateUserForm;
+    onSubmit() {
+        this.updateUserForm = this.formBuilder.group({
+            _id: [this.selectedUser._id],
+            username: [this.selectedUser.username, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            emailAddress: [this.selectedUser.emailAddress, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            fullName: [this.selectedUser.fullName, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
+            age: [this.selectedUser.age, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]
+        });
         if (this.updateUserForm.invalid || this.isLoading) {
             return;
         }
@@ -1783,20 +1784,10 @@ let UpdateUserComponent = class UpdateUserComponent {
             this.isLoading = false;
         });
     }
-    get updateUserFormData() {
-        return this.updateUserForm.controls;
-    }
+    // get updateUserFormData() { 
+    //   return this.updateUserForm.controls;
+    //  }
     setForm(userId) {
-        this.userService.getUserById(userId).subscribe(x => {
-            this.selectedUser = x;
-            this.updateUserForm = this.formBuilder.group({
-                _id: [this.selectedUser._id],
-                username: [this.selectedUser.username, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
-                email: [this.selectedUser.emailAddress, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
-                fullName: [this.selectedUser.fullName, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required],
-                age: [this.selectedUser.age, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]
-            });
-        });
     }
 };
 UpdateUserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
