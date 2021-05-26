@@ -24,10 +24,19 @@ export class ProfileComponent implements OnInit {
   ) { 
   }
 
+  ngAfterViewInit(){
+
+    document.onclick = (args: any) : void => {
+      console.log(args.target.tagName);
+      if(args.target.tagName == "NGB-MODAL-BACKDROP"){
+        this.modalService.dismissAll()
+      }
+    }
+  }
+
   updateUser(user: User){
     const ref = this.modalService.open(UpdateUserComponent, { centered: true, windowClass : "update-user-modal"});
     ref.componentInstance.selectedUser = user;
-
     ref.result.then((yes) =>{
       console.log("Submit clicked");
 

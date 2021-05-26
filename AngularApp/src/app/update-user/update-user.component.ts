@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../shared/user.service'
 import { User } from '../shared/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-update-user',
@@ -13,8 +15,13 @@ export class UpdateUserComponent implements OnInit {
   selectedUser: User;
   updateUserForm: FormGroup;
   isLoading = false;
-
-  constructor(private route: ActivatedRoute, private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
+  close: EventEmitter<void> = new EventEmitter<void>();
+  constructor(
+    private route: ActivatedRoute, 
+    private userService: UserService, 
+    private formBuilder: FormBuilder, 
+    private router: Router,
+    private bsModalRef: BsModalRef) { }
 
   ngOnInit() {
     try{
@@ -26,6 +33,11 @@ export class UpdateUserComponent implements OnInit {
     catch(err){
       console.log(err);
     }
+  }
+
+  onModalClose(): void {
+    this.bsModalRef.hide();
+    // this.close.emit();
   }
 
   onSubmit(){
@@ -42,20 +54,10 @@ export class UpdateUserComponent implements OnInit {
     this.isLoading = true;
     this.userService.updateUser(this.updateUserForm.value).subscribe(x => {
       this.isLoading = false; 
-      this.router.navigateByUrl("profile")
+      window.location.reload();
     }, 
       error => {
         this.isLoading = false;
       });
   }
-
-  // get updateUserFormData() { 
-  //   return this.updateUserForm.controls;
-  //  }
-
-  private setForm(userId: number){
-  
-   
-  }
-
 }

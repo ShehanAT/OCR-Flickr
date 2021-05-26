@@ -49,16 +49,15 @@ router.put('/:id', (req, res) => {
 	User.findById(req.body._id, function(err, user){
 		if(err){
 			console.log('Error in user update' + JSON.stringify(err, undefined, 2));
+			return res.status(400).send('No user found to update!');
 		}
 		user.username = req.body.username;
 		user.emailAddress = req.body.emailAddress;
 		user.fullName = req.body.fullName;
 		user.age = req.body.age;
 		user.save()
-		return res.end(user.toJSON())
-	});
-
-	return res.status(400).send('No user found to update!');
+		return res.status(200).send(user.toJSON())
+	});	
 });
 
 router.delete('/:id', (req, res) => {

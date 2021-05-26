@@ -49,7 +49,7 @@
     </div>
     <div class="card-footer">
       <button [disabled]="isLoading" class="btn btn-primary mr-2" type="submit">Update</button>
-      <button [disabled]="isLoading" class="btn btn-danger mr-2" (click)="close()">Cancel</button>
+      <button [disabled]="isLoading" class="btn btn-danger mr-2" (close)="onModalClose()" type="button">Cancel</button>
     </div>
   </div>
 </form>
