@@ -54,8 +54,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     CompareValidatorDirective,
-    UpdateUserComponent,
-    // NgbModalBackdrop
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule, 

@@ -1,5 +1,5 @@
 
-<form #updateUserForm="ngForm" (ngSubmit)="onSubmit()">
+<form #updateUserForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="formReady" [formGroup]="updateUserForm">
   <div class="">
     <!--  text-center w-50 mx-auto mt-5 -->
     <div class="card-header bg-primary text-white">
@@ -21,14 +21,19 @@
       <div class="form-group row d-flex justify-content-center align-items-center">
           <label for="email" class="col-form-label col-sm-2 text-right">Email:</label>
           <div class="col-sm-5">
-              <input type="text" class="form-control" name="emailAddress" #emailAddress="ngModel" [(ngModel)]="selectedUser.emailAddress" />
-              <!-- <div *ngIf="updateUserForm.emailAddress.invalid && (updateUserForm.emailAddress.dirty || updateUserForm.emailAddress.touched)" class="alert-danger">
+              <input type="text" class="form-control" formControlName="emailAddress" name="emailAddress" [(ngModel)]="selectedUser.emailAddress" />
+              <div *ngIf="updateUserForm.get('emailAddress').invalid">
+                <span>Email must be a valid address!</span>
+              </div>
+              <!--#emailAddress="ngModel"
+                *ngIf="updateUserForm.get('emailAddress').hasError('required')" 
+                <div *ngIf="updateUserForm.emailAddress.invalid && (updateUserForm.emailAddress.dirty || updateUserForm.emailAddress.touched)" class="alert-danger">
                   <span *ngIf="updateUserForm.emailAddress.errors.required">Email is required!</span>
                   <span *ngIf="updateUserForm.emailAddress.errors.email">Email must be a valid address!</span>
               </div> -->
-              <div *ngIf="updateUserForm.hasError('emailAddressInvalid')" class="alert-danger">
+              <!-- <div class="alert-danger" *ngIf="updateUserForm.hasError('emailAddressInvalid')" >
                 <span>Email is invalid!</span>
-              </div>
+              </div> -->
           </div>
       </div>
       <div class="form-group row d-flex justify-content-center align-items-center">
