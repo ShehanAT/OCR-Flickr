@@ -24,12 +24,17 @@ export class ProfileComponent implements OnInit {
   ) { 
   }
 
+  closeModal(){
+    this.modalService.dismissAll();
+    this.ngOnInit()
+  }
   ngAfterViewInit(){
-
     document.onclick = (args: any) : void => {
-      console.log(args.target.tagName);
       if(args.target.tagName == "NGB-MODAL-BACKDROP"){
-        this.modalService.dismissAll()
+        this.closeModal();
+      }
+      if(args.target.id == "update-user-modal-close"){
+        this.closeModal();
       }
     }
   }

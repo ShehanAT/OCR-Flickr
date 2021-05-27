@@ -1,10 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../shared/user.service'
 import { User } from '../shared/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EventEmitter } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-update-user',
@@ -12,16 +10,17 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./update-user.component.css']
 })
 export class UpdateUserComponent implements OnInit {
-  selectedUser: User;
+  selectedUser: User; 
   updateUserForm: FormGroup;
   isLoading = false;
-  close: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(
     private route: ActivatedRoute, 
     private userService: UserService, 
     private formBuilder: FormBuilder, 
-    private router: Router,
-    private bsModalRef: BsModalRef) { }
+    private router: Router
+    ) {
+    }
 
   ngOnInit() {
     try{
@@ -35,10 +34,6 @@ export class UpdateUserComponent implements OnInit {
     }
   }
 
-  onModalClose(): void {
-    this.bsModalRef.hide();
-    // this.close.emit();
-  }
 
   onSubmit(){
     this.updateUserForm = this.formBuilder.group({
