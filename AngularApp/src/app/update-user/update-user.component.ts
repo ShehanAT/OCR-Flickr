@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../shared/user.service'
 import { User } from '../shared/user.model';
@@ -13,37 +13,49 @@ export class UpdateUserComponent implements OnInit {
   selectedUser: User; 
   updateUserForm: FormGroup;
   isLoading = false;
+  dataReady = false;
+  component = this;
 
   constructor(
     private route: ActivatedRoute, 
     private userService: UserService, 
     private formBuilder: FormBuilder, 
-    private router: Router
+    private router: Router,
+    private cdRef:ChangeDetectorRef
     ) {
+     
     }
 
-  ngOnInit() {
+  setupForm(){
+    this.updateUserForm = this.formBuilder.group({
+      _id: [this.selectedUser._id],
+      username: [this.selectedUser.username, Validators.required],
+      emailAddress: [this.selectedUser.emailAddress, [Validators.required, Validators.email]],
+      fullName: [this.selectedUser.fullName, Validators.required],
+      age: [this.selectedUser.age, Validators.required]
+    });  
+  }
+
+  ngOnInit(){
     try{
       const userId = JSON.parse(sessionStorage.getItem('currentUser'))["user"]["_id"]
       this.userService.getUserById(userId).subscribe(x => {
         this.selectedUser = x[0]['user']
+        this.setupForm();
+        this.dataReady = true;
+        this.cdRef.detectChanges();
       });
+      
     }
     catch(err){
       console.log(err);
     }
   }
 
-
   onSubmit(){
-    this.updateUserForm = this.formBuilder.group({
-      _id: [this.selectedUser._id],
-      username: [this.selectedUser.username, Validators.required],
-      emailAddress: [this.selectedUser.emailAddress, Validators.required],
-      fullName: [this.selectedUser.fullName, Validators.required],
-      age: [this.selectedUser.age, Validators.required]
-    });
+    this.setupForm();
     if(this.updateUserForm.invalid || this.isLoading){
+      this.updateUserForm.setErrors({ ...this.updateUserForm.errors, 'emailAddressInvalid': true });
       return ;
     }
     this.isLoading = true;

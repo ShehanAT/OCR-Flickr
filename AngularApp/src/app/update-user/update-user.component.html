@@ -5,6 +5,9 @@
     <div class="card-header bg-primary text-white">
       <h3>Update User</h3>
     </div>
+    <!-- <div *ngIf="updateUserForm.hasError('emailAddressInvalid')" class="alert-danger">
+      <span>Email is invalid!</span>
+    </div> -->
     <div class="card-body">
       <div class="form-group row d-flex justify-content-center align-items-center">
           <label for="username" class="col-form-label col-sm-2 text-right">Username:</label>
@@ -19,18 +22,19 @@
           <label for="email" class="col-form-label col-sm-2 text-right">Email:</label>
           <div class="col-sm-5">
               <input type="text" class="form-control" name="emailAddress" #emailAddress="ngModel" [(ngModel)]="selectedUser.emailAddress" />
-              <!-- [(ngModel)]=selectedUser.emailAddress -->
-              <!-- <div *ngIf="updateUserFormData.email.invalid && (updateUserFormData.email.dirty || updateUserFormData.email.touched)" class="alert-danger">
-                  <span *ngIf="updateUserFormData.email.errors.required">Email is required!</span>
-                  <span *ngIf="updateUserFormData.email.errors.email">Email must be a valid address!</span>
+              <!-- <div *ngIf="updateUserForm.emailAddress.invalid && (updateUserForm.emailAddress.dirty || updateUserForm.emailAddress.touched)" class="alert-danger">
+                  <span *ngIf="updateUserForm.emailAddress.errors.required">Email is required!</span>
+                  <span *ngIf="updateUserForm.emailAddress.errors.email">Email must be a valid address!</span>
               </div> -->
+              <div *ngIf="updateUserForm.hasError('emailAddressInvalid')" class="alert-danger">
+                <span>Email is invalid!</span>
+              </div>
           </div>
       </div>
       <div class="form-group row d-flex justify-content-center align-items-center">
         <label for="fullName" class="col-form-label col-sm-2 text-right">Fullname:</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" name="fullName" #fullName="ngModel" [(ngModel)]="selectedUser.fullName" />
-            <!-- [(ngModel)]="selectedUser.fullName" -->
             <!-- <div *ngIf="updateUserFormData.fullName.invalid && (updateUserFormData.fullName.dirty || updateUserFormData.fullName.touched)" class="alert-danger">
                 <span>Fullname is required!</span>
             </div> -->
@@ -40,7 +44,6 @@
           <label for="age" class="col-form-label col-sm-2 text-right">Age:</label>
           <div class="col-sm-5">
               <input type="number" class="form-control" name="age" #age="ngModel" [(ngModel)]="selectedUser.age" />
-              <!-- [(ngModel)]="selectedUser.age" -->
               <!-- <div *ngIf="updateUserFormData.age.invalid && (updateUserFormData.age.dirty || updateUserFormData.age.touched)" class="alert-danger">
                   <span>Age is required!</span>
               </div> -->
