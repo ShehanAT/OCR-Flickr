@@ -42,6 +42,7 @@ export class ProfileComponent implements OnInit {
   updateUser(user: User){
     const ref = this.modalService.open(UpdateUserComponent, { centered: true, windowClass : "update-user-modal"});
     ref.componentInstance.selectedUser = user;
+
     ref.result.then((yes) =>{
       console.log("Submit clicked");
 
