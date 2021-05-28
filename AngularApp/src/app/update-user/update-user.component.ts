@@ -52,12 +52,6 @@ export class UpdateUserComponent implements OnInit {
 
   setupForm(){
     this.updateUserForm = this.formBuilder.group({
-    // this.formBuilder.group({
-      // _id: [this.selectedUser._id],
-      // username: [this.selectedUser.username, Validators.required],
-      // emailAddress: [this.selectedUser.emailAddress, [Validators.required, Validators.email]],
-      // fullName: [this.selectedUser.fullName, Validators.required],
-      // age: [this.selectedUser.age, Validators.required]
       _id: new FormControl(this.selectedUser._id),
       username: new FormControl(this.selectedUser.username, [
         Validators.required
