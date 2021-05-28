@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, tap } from 'rxjs/operators';
-
+import { AuthenticationService } from '../authentication.service';
 import 'rxjs/add/operator/toPromise';
 import { LoginModel } from '../login/login.model'
 import { User } from './user.model';
@@ -17,31 +17,15 @@ export class UserService {
   users: User[];
   private baseURL = 'http://localhost:3000'
   private usersURL = 'http://localhost:3000/api/getUsers';
-  private apiURL = 'http://localhost:3000/api/'
+  private apiURL = 'http://localhost:3000/api/users'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'})
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthenticationService) {
   
   }
-  
-
-  // login(loginModel: TokenPayload): Observable<any>{
-  //   console.log(loginModel)
-  //   sessionStorage.removeItem('currentUser');
-
-  //   return this.http.post<any>(`${this.baseURL}/api/login`, loginModel, this.httpOptions)
-  //     .pipe(map(user => {
-  //       sessionStorage.setItem('currentUser', JSON.stringify(user));
-  //       console.log(JSON.stringify(user))
-  //       console.log(this.currentUserSubject.value);
-
-  //       this.currentUserSubject.next(user);
-  //       return user;
-  //     }))
-  // }
 
   postUser(user: User){
   	return this.http.post(this.usersURL, user);
@@ -62,7 +46,10 @@ export class UserService {
   }
 
   updateUser(user: User){
-    return this.http.put(`${this.usersURL}/${user._id}`, user, this.httpOptions)
+    return this.http.put(`${this.apiURL}/${user._id}`, user) 
+    // this.auth.profile().subscribe(user => {
+    //   return this.http.put(`${this.apiURL}/${user._id}`, user) 
+    // })
   }
 
   getUserByUsername(uName: string){

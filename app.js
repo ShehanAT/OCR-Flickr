@@ -39,7 +39,7 @@ app.use(passport.initialize())
 //this is the route middleware
 
 app.use('/api', routesApi);//intiashiating /api route
-
+app.use('/api/users', userController)
 //catch 404 and forward it to the global error handler
 app.use(function(req, res, next){
     var err = new Error('Not Found');

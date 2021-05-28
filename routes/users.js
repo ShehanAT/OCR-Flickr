@@ -1,9 +1,15 @@
 const express = require('express');
 var router = express.Router();
-var ObjectId = require('mongoose').Types.ObjectId;
-var { User } = require('../api/models/user');
+// var ObjectId = require('mongoose').Types.ObjectId;
+
+const dbURI = 'mongodb://localhost/CrudDB'
+const mongoose = require('mongoose');
+mongoose.connect(dbURI)
+require('../api/models/user');
+const User = mongoose.model('User');
 var mongojs = require('mongojs');
 var db = require('../db.js');
+
 
 router.get('/', (req, res) => {
 	console.log("passing user index route");
@@ -40,33 +46,18 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-	if(!ObjectId.isValid(req.params.id)){
-		return res.status(400).send('No user record with given id:' + req.params.id);
-	}
-	var user = {
-		username: req.body.username,
-		fullname: req.body.fullName,
-		age: req.body.age,
-		emailAddress: req.body.emailAddress,
-		password: req.body.password
-	};
-	User.findById(req.params.id)
-	.update(req.body)
-	.exec((err, record) => {
+	User.findById(req.body._id, function(err, user){
 		if(err){
-			err.status = 400;
-			console.log('Error in User Update : ' + JSON.stringify(err, undefined, 2));
+			console.log('Error in user update' + JSON.stringify(err, undefined, 2));
+			return res.status(400).send('No user found to update!');
 		}
-		User.findById(req.params.id)
-		.exec((err, record) => {
-			if(err){
-				console.log('Error in Finding User Update : ' + JSON.stringify(err, undefined, 2));
-			}
-			res.send(record);
-		})
-
-		//res.send(record);//does not return updated body
-	});
+		user.username = req.body.username;
+		user.emailAddress = req.body.emailAddress;
+		user.fullName = req.body.fullName;
+		user.age = req.body.age;
+		user.save()
+		return res.status(200).send(user.toJSON())
+	});	
 });
 
 router.delete('/:id', (req, res) => {
