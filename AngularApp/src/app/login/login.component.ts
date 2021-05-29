@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.auth.login(this.credentials).subscribe((user) => {
-        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        sessionStorage.setItem('currentUser', JSON.stringify(user["user"]));
         console.log(JSON.stringify(user))
         console.log(this.currentUserSubject.value)
 

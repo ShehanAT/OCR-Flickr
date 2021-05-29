@@ -10,7 +10,12 @@
               <input type="text" class="form-control" name="username" formControlName="username"/>
               <div *ngIf="formErrors.username" class="alert alert-danger">
                 {{ formErrors.username }}
+             
               </div>
+              <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched) && username.errors?.uniqueUsernameUpdate">
+                Username is already taken! Please pick a different one...
+              </div>
+   
           </div>
       </div>
       <div class="form-group row d-flex justify-content-center align-items-center">
