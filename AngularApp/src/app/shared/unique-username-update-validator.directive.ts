@@ -28,15 +28,6 @@ export function uniqueUsernameUpdateValidator(userService: UserService): AsyncVa
                 }else{
                     return null;
                 }
-                // console.log("currentUsername: " + currentUsername);
-                // if(username.length > 0 && username != currentUsername){
-                //     // console.log('unique name: false');
-                //     return {'uniqueUsernameUpdate': true}
-                // }else{
-                //     // console.log('unique name: true');
-                //     return null
-
-                // }
                 })
             )
     }

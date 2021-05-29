@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service'
 import { User } from '../shared/user.model';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -43,11 +42,8 @@ export class UpdateUserComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute, 
     private userService: UserService, 
     private formBuilder: FormBuilder, 
-    private router: Router,
-    private cdRef:ChangeDetectorRef
     ) {
      
     }
@@ -57,7 +53,6 @@ export class UpdateUserComponent implements OnInit {
       _id: new FormControl(this.selectedUser._id),
       username: new FormControl(this.selectedUser.username, [
         Validators.required,
-        // uniqueUsernameValidator(this.userService)
       ],
       [uniqueUsernameUpdateValidator(this.userService)]
       ),

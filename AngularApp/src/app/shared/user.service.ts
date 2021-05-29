@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { map, tap } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication.service';
 import 'rxjs/add/operator/toPromise';
-import { LoginModel } from '../login/login.model'
 import { User } from './user.model';
 
 
@@ -47,9 +45,6 @@ export class UserService {
 
   updateUser(user: User){
     return this.http.put(`${this.apiURL}/${user._id}`, user) 
-    // this.auth.profile().subscribe(user => {
-    //   return this.http.put(`${this.apiURL}/${user._id}`, user) 
-    // })
   }
 
   getUserByUsername(uName: string){
