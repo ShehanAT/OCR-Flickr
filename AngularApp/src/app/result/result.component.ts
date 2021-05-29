@@ -3,8 +3,6 @@ import { SearchPicsComponent } from '../search-pics/search-pics.component';
 import { ApiCallService, imageTag } from '../api-call.service';
 import { Router } from '@angular/router';
 import { AuthGuardService } from '../auth-guard.service';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 
 @Component({
   selector: 'app-result',

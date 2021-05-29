@@ -1,12 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserService} from '../shared/user.service';
 import { uniqueUsernameValidator } from '../shared/unique-username-validator.directive';
-import { ConfirmEqualValidatorDirective } from '../shared/confirm-equal-validator.directive';
 import { compareValidator } from '../shared/confirm-equal-validator.directive';
 
 @Component({

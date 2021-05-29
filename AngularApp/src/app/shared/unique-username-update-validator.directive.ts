@@ -34,10 +34,7 @@ export function uniqueUsernameUpdateValidator(userService: UserService): AsyncVa
 }
 
 export class UniqueUsernameUpdateValidatorDirective implements Validator{
-    
-
     constructor( private userService: UserService){ }//create the http.post in user.service
-
     validate(control: AbstractControl): {[key: string]: any} | null {
         var result = this.userService.getUserByUsername(control.value);
         console.log(result);

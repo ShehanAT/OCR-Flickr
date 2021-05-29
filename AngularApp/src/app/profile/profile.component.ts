@@ -4,7 +4,6 @@ import { AuthenticationService, UserDetails } from '../authentication.service';
 import { AuthGuardService } from '../auth-guard.service';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { User } from '../shared/user.model'
-import { UserService } from '../shared/user.service'
 import { Router } from '@angular/router';
 import { UpdateUserComponent } from '../update-user/update-user.component';
 
@@ -18,9 +17,7 @@ export class ProfileComponent implements OnInit {
   
   constructor(
     private auth: AuthenticationService, 
-    private authGuard: AuthGuardService, 
     private modalService: NgbModal,
-    private router: Router
   ) { 
   }
 
