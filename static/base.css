@@ -1,0 +1,256 @@
+.message { margin-bottom: 15px; }
+.image { float: left; margin-right: 10px }
+.user { float: left; font-weight: bold; color: #009; margin-bottom: 5px; }
+.content { 
+    margin-left: 30px; 
+    font-style: italic; 
+    color: black; 
+    background-color: #fffff0; 
+    width: 80%; 
+}
+
+.nav-body-content{
+    margin-left: 30px; 
+    font-style: italic; 
+    color: black; 
+    width: 80%; 
+}
+
+/* global styles */
+
+body{ 
+    display: flex;
+    flex-direction: column;
+    /*
+    justify-content: center;
+    align-items: center; */
+    height: 100vh;
+    position: relative;
+    background-color: #fffff0;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.btn-primary{
+    background-color: #375576 !important;
+}
+
+/* navbar styles */
+#navbar{
+    background-color: #375576 !important;
+}
+
+
+/* forum view styles */
+
+
+
+/* category view styles */
+
+
+/* thread view styles */
+#reply-message{
+    width: 80%;
+    height: 150px;
+}
+
+.reply-text{
+    font-weight: 600;
+}
+
+.thread-content{
+    border-spacing: 2px;
+    margin-left: 30px;
+    width: 80%; 
+    background-color: white;
+    border: #4e95f4 1px solid;
+}
+
+.thread-content:nth-child(even){
+    background-color: #dae5f4; 
+}
+
+.thread-content:nth-child(even) > p{
+    background-color: #dae5f4;
+}
+
+.reply-icon{
+    width: 15px;
+    height: 15px;
+}
+
+
+
+.profilePic { 
+    width: 50px;
+    padding-right: 10px;
+    z-index: -1;
+}
+
+
+
+#addPostBtn{
+    margin: 30px;
+}
+
+#addThreadBtn{
+    margin: 30px;
+}
+
+#category-table{
+    margin-left: 30px;
+    width: 80%;
+}
+
+#forum-table{
+    margin-left: 30px;
+    width: 80%;
+}
+
+.page-content{
+    margin-left: 30px;
+    width: 80%;
+}
+
+.post-signature-container{
+    border: 1px solid black;
+}
+
+/* Reply content styles  */
+.reply_left_quote{
+    width: 20px;
+}
+
+.first-reply-content, .second-reply-content{
+    width: 80%;
+    margin-left: 30px;
+    border: 1px solid black;
+}
+
+.reply-content > img{
+    background: url("leftQuote.jpg") no-repeat;
+    width: 12px;
+    height: 12px;
+    float: left;
+}
+
+
+/* Update profile modal */
+.profile-pic-img {
+    width: 15%;
+}
+
+.update-profile-modal, .change-password-modal {
+    display: none;
+    padding: 20px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    z-index: 1;
+    width: 30vw;
+    text-align: left;
+}
+
+.post-signature-modal {
+    display: none;
+    padding: 20px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    z-index: 1;
+    width: 60vw;
+    text-align: left;
+}
+
+.modal-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: grey;
+    /* z-index: -1; */
+    z-index: 0;
+    opacity: 50%;
+}
+
+.open {
+    display: block;
+}
+  
+.hide {
+    display: none;
+}
+
+.update-modal-btn-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.update-modal-btn {
+    width: 190px;
+    border: 1px solid red;
+}
+
+.open-modal-btn-container {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+}
+
+.open-modal-btn {
+    width: 15%;
+    margin: 5px;
+}
+
+#update-profile-btn-container {
+    text-align: center;
+}
+
+/* Change password section */
+.change-password-modal {
+
+}
+
+/* index.html */
+button.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+/* page-single-thread.html */
+
