@@ -14,7 +14,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
-import {CommonService} from './common.service';
 import { AuthenticationService } from './authentication.service';
 import { AuthGuardService } from './auth-guard.service';
 import { HomeComponent } from './home/home.component';
@@ -26,15 +25,17 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CompareValidatorDirective } from './shared/compare-validator.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { HotToastModule } from '@ngneat/hot-toast';
+import { ToastrModule } from 'ngx-toastr';
 
 
 const routes: Routes = [
     {path:'', component: HomeComponent},
     {path:'login', component: LoginComponent},
     {path:'register', component: RegisterComponent},
-    {path:'profile', component: ProfileComponent},
-    {path:'result', component: ResultComponent},
-    {path: 'searchPics', component: SearchPicsComponent}
+    {path:'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+    {path:'result', component: ResultComponent, canActivate: [AuthGuardService]},
+    {path: 'searchPics', component: SearchPicsComponent, canActivate: [AuthGuardService]}
 ]
 
 @NgModule({
@@ -64,7 +65,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthenticationService,

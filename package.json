@@ -42,6 +42,8 @@
     "@angular/platform-browser-dynamic": "^8.0.2",
     "@angular/router": "^8.0.2",
     "@ng-bootstrap/ng-bootstrap": "^5.3.0",
+    "@ngneat/hot-toast": "^2.0.2",
+    "@ngneat/overview": "^2.0.1",
     "angular-material": "^1.2.2",
     "body-parser": "^1.19.0",
     "boostrap": "^2.0.0",

@@ -330,6 +330,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
 /* harmony import */ var _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./shared/compare-validator.directive */ "./src/app/shared/compare-validator.directive.ts");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
 
 
 
@@ -354,14 +355,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// import { HotToastModule } from '@ngneat/hot-toast';
 
 const routes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"] },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"] },
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"] },
-    { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"] },
-    { path: 'result', component: _result_result_component__WEBPACK_IMPORTED_MODULE_18__["ResultComponent"] },
-    { path: 'searchPics', component: _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_17__["SearchPicsComponent"] }
+    { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"], canActivate: [_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__["AuthGuardService"]] },
+    { path: 'result', component: _result_result_component__WEBPACK_IMPORTED_MODULE_18__["ResultComponent"], canActivate: [_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__["AuthGuardService"]] },
+    { path: 'searchPics', component: _search_pics_search_pics_component__WEBPACK_IMPORTED_MODULE_17__["SearchPicsComponent"], canActivate: [_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__["AuthGuardService"]] }
 ];
 let AppModule = class AppModule {
 };
@@ -393,7 +396,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(routes),
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"],
-            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_24__["NgbModule"]
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_24__["NgbModule"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_25__["ToastrModule"].forRoot()
         ],
         providers: [
             _authentication_service__WEBPACK_IMPORTED_MODULE_14__["AuthenticationService"],
@@ -423,19 +427,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./authentication.service */ "./src/app/authentication.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+
 
 
 
 
 let AuthGuardService = class AuthGuardService {
-    constructor(auth, router) {
+    constructor(auth, router, toast) {
         this.auth = auth;
         this.router = router;
+        this.toast = toast;
     }
     canActivate() {
         if (!this.auth.isLoggedIn()) { //checking if user is logged in using the authentication service
-            M.toast({ html: 'You must login to view this page!', classes: 'rounded' });
-            this.router.navigateByUrl('/'); //if not logged in redirect to home page(home component)
+            this.toast.error('You must login to view that page!');
+            // this.toast.
+            this.router.navigateByUrl('/login'); //if not logged in redirect to home page(home component)
             return false;
         }
         return true;
@@ -443,7 +451,8 @@ let AuthGuardService = class AuthGuardService {
 };
 AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+        ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]])
 ], AuthGuardService);
 
 
@@ -1587,23 +1596,14 @@ ConfirmEqualValidatorDirective = ConfirmEqualValidatorDirective_1 = tslib__WEBPA
 /*!**********************************************************************!*\
   !*** ./src/app/shared/unique-username-update-validator.directive.ts ***!
   \**********************************************************************/
-/*! exports provided: uniqueUsernameUpdateValidator, UniqueUsernameUpdateValidatorDirective */
+/*! exports provided: uniqueUsernameUpdateValidator */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uniqueUsernameUpdateValidator", function() { return uniqueUsernameUpdateValidator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueUsernameUpdateValidatorDirective", function() { return UniqueUsernameUpdateValidatorDirective; });
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
 
-// @Directive({
-//     selector: '[uniqueUsernameUpdate]',
-//     providers: [{ 
-//         provide: NG_ASYNC_VALIDATORS, 
-//         useExisting: UniqueUsernameUpdateValidatorDirective, 
-//         multi: true
-//     }]
-// })
 function uniqueUsernameUpdateValidator(userService) {
     return (c) => {
         var currentUsername = JSON.parse(sessionStorage.getItem("currentUser"))["username"];
@@ -1623,16 +1623,6 @@ function uniqueUsernameUpdateValidator(userService) {
             }
         }));
     };
-}
-class UniqueUsernameUpdateValidatorDirective {
-    constructor(userService) {
-        this.userService = userService;
-    } //create the http.post in user.service
-    validate(control) {
-        var result = this.userService.getUserByUsername(control.value);
-        console.log(result);
-        return result ? { 'uniqueUsernameUpdate': true } : null;
-    }
 }
 
 
