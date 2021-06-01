@@ -41,7 +41,8 @@ const routes: Routes = [
 
 @NgModule({
   entryComponents: [
-    UpdateUserComponent
+    UpdateUserComponent,
+    ChangePasswordComponent
   ],
   declarations: [
     AppComponent,

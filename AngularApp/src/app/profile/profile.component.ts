@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, UserDetails } from '../authentication.service';
 //can import both classes and interfaces in the same import statement
-import { AuthGuardService } from '../auth-guard.service';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { User } from '../shared/user.model'
-import { Router } from '@angular/router';
 import { UpdateUserComponent } from '../update-user/update-user.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-profile',
@@ -40,13 +39,12 @@ export class ProfileComponent implements OnInit {
     const ref = this.modalService.open(UpdateUserComponent, { centered: true, windowClass : "update-user-modal"});
     ref.componentInstance.selectedUser = user;
 
-    ref.result.then((yes) =>{
-      console.log("Submit clicked");
+  }
 
-    },
-      (cancel) => {
-        console.log('Cancel clicked');
-      })
+  changePassword(user: User){
+    const ref = this.modalService.open(ChangePasswordComponent, { centered: true, windowClass: "change-password-modal"});
+    ref.componentInstance.selectedUser = user;
+
   }
 
   ngOnInit() {//on start get the details of the user that is currently logged in
