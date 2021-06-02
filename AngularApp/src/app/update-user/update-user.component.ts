@@ -110,15 +110,11 @@ export class UpdateUserComponent implements OnInit {
           if(field == "username"){
             console.log(control);
           }
-          // if(this.username.invalid && key != 'required'){
-          //   // console.log(messages['uniqueUsernameUpdate']);
-          //   console.log(field);
-          //   this.formErrors[field] += messages['uniqueUsernameUpdate'];
-          // }else{
+          if(this.username.invalid && key != 'required'){
+            this.formErrors[field] += messages['uniqueUsernameUpdate'];
+          }else{
             this.formErrors[field] += messages[key] + ' ';
-          // }
-          // console.log("field " + field);
-          // console.log("key " + key)
+          }
           
         }
       }

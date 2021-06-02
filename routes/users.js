@@ -61,8 +61,20 @@ router.put('/:id', (req, res) => {
 });
 
 router.put('/:id/changePassword', (req, res) => {
-	console.log(req.body.newPassword);
-	return res.status(200).send({'status': 'success'});
+	newPassword = req.body.newPassword;
+	User.findById(req.body.user._id, function(err, user){
+		if(err){
+			console.log('Error in user update' + JSON.stringify(err, undefined, 2));
+			return res.status(500).send('No user found to update!');
+		}
+		if(newPassword){
+			user.setPassword(req.body.newPassword);
+			user.save()
+			return res.status(200).send(user.toJSON())
+		}else{
+			return res.status(500).send('New password not sent!');
+		}
+	});	
 });
 
 router.delete('/:id', (req, res) => {

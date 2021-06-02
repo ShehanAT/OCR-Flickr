@@ -97,3 +97,10 @@ a.action-btn:hover{
     max-height: -webkit-fill-available;
 }   
 
+.change-password-modal{
+    max-width: calc(100vw - 900px);
+}
+.change-password-modal .modal-dialog {
+    max-height: -webkit-fill-available;
+} 
+
