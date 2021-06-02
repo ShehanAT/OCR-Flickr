@@ -29,8 +29,16 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
+  get password() { return this.changePasswordForm.get('newPassword'); }
+
   onSubmit(){
-    // this.userService.updateUser
+    // var changePasswordData = [this.selectedUser, this.password]
+    this.userService.changePassword(this.selectedUser, this.password.value).subscribe(data => {
+      console.log(data);
+    },(error) => {
+      console.log(error);
+    }
+    );
   }
 
 }

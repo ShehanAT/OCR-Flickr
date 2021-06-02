@@ -57,6 +57,17 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/change-password/change-password.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/change-password/change-password.component.html ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<form [formGroup]=\"changePasswordForm\" *ngIf=\"changePasswordForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"\">\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"password\" class=\"col-form-label col-sm-2 text-right\">Current Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"currentPassword\" formControlName=\"currentPassword\"/>\n              <!-- <div *ngIf=\"formErrors.password\" class=\"alert alert-danger\">\n                {{ formErrors.username }}\n             \n              </div> -->\n              <!-- <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched) && username.errors?.uniqueUsernameUpdate\">\n                Username is already taken! Please pick a different one...\n              </div> -->\n   \n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">New Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"newPassword\" formControlName=\"newPassword\" />\n              <!-- <div *ngIf=\"formErrors.emailAddress\" class=\"alert alert-danger\">\n                {{ formErrors.emailAddress }}\n              </div> -->\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Confirm Password:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"text\" class=\"form-control\" name=\"confirmPassword\" formControlName=\"confirmPassword\" />\n            <!-- <div *ngIf=\"formErrors.fullName\" class=\"alert alert-danger\">\n              {{ formErrors.fullName }}\n            </div> -->\n        </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"!changePasswordForm.valid\" class=\"btn btn-primary mr-2\" type=\"submit\">Update</button>\n      <button [disabled]=\"isLoading\" class=\"btn btn-danger mr-2\" id=\"update-user-modal-close\" type=\"button\">Cancel</button>\n    </div>\n  </div>\n</form>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/footer/footer.component.html":
 /*!************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/footer/footer.component.html ***!
@@ -108,7 +119,7 @@ module.exports = "<br>\r\n<br>\r\n\r\n<br>\r\n\r\n<br>\r\n<br>\r\n\r\n<div class
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container\">\r\n \r\n <div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n   <h1 class=\"form-signin-heading\">Your Profile</h1>\r\n   <div class=\"form-horizontal\">\r\n    \r\n    <div class=\"form-group\">\r\n      <p class=\" control-label text-left\"><strong>Username:  </strong><br>\r\n        {{ user?.username }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\"control-label text-left\"><strong>Full Name:  </strong><br>\r\n        {{ user?.fullName }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Email:  </strong><br>\r\n        {{ user?.emailAddress }}</p>\r\n    </div>\r\n     <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Age:  </strong><br>\r\n          {{ user?.age}}</p>\r\n     </div>\r\n    <button class=\"btn btn-lg btn-outline-primary\" (click)=\"updateUser(user)\">Update Profile</button>\r\n    \r\n    <hr>\r\n    </div>\r\n   </div> \r\n </div>\r\n</div>\r\n\r\n<app-footer></app-footer>\r\n"
+module.exports = "<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container\">\r\n \r\n <div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n   <h1 class=\"form-signin-heading\">Your Profile</h1>\r\n   <div class=\"form-horizontal\">\r\n    \r\n    <div class=\"form-group\">\r\n      <p class=\" control-label text-left\"><strong>Username:  </strong><br>\r\n        {{ user?.username }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\"control-label text-left\"><strong>Full Name:  </strong><br>\r\n        {{ user?.fullName }}</p>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Email:  </strong><br>\r\n        {{ user?.emailAddress }}</p>\r\n    </div>\r\n     <div class=\"form-group\">\r\n      <p class=\" control-label\"><strong>Age:  </strong><br>\r\n          {{ user?.age}}</p>\r\n     </div>\r\n    <button class=\"btn btn-lg btn-outline-primary\" (click)=\"updateUser(user)\">Update Profile</button>\r\n    <button class=\"btn btn-lg btn-outline-primary\" (click)=\"changePassword(user)\">Change Password</button>\r\n    <hr>\r\n    </div>\r\n   </div> \r\n </div>\r\n</div>\r\n\r\n<app-footer></app-footer>\r\n"
 
 /***/ }),
 
@@ -334,6 +345,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./shared/compare-validator.directive */ "./src/app/shared/compare-validator.directive.ts");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _change_password_change_password_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./change-password/change-password.component */ "./src/app/change-password/change-password.component.ts");
 
 
 
@@ -361,6 +373,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // import { HotToastModule } from '@ngneat/hot-toast';
 
+
 var routes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"] },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"] },
@@ -375,7 +388,8 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             entryComponents: [
-                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_13__["UpdateUserComponent"]
+                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_13__["UpdateUserComponent"],
+                _change_password_change_password_component__WEBPACK_IMPORTED_MODULE_26__["ChangePasswordComponent"]
             ],
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
@@ -390,7 +404,8 @@ var AppModule = /** @class */ (function () {
                 _header_header_component__WEBPACK_IMPORTED_MODULE_21__["HeaderComponent"],
                 _footer_footer_component__WEBPACK_IMPORTED_MODULE_22__["FooterComponent"],
                 _shared_compare_validator_directive__WEBPACK_IMPORTED_MODULE_23__["CompareValidatorDirective"],
-                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_13__["UpdateUserComponent"]
+                _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_13__["UpdateUserComponent"],
+                _change_password_change_password_component__WEBPACK_IMPORTED_MODULE_26__["ChangePasswordComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -559,6 +574,69 @@ var AuthenticationService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], AuthenticationService);
     return AuthenticationService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/change-password/change-password.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/change-password/change-password.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NoYW5nZS1wYXNzd29yZC9jaGFuZ2UtcGFzc3dvcmQuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/change-password/change-password.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/change-password/change-password.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ChangePasswordComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePasswordComponent", function() { return ChangePasswordComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/user.service */ "./src/app/shared/user.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+var ChangePasswordComponent = /** @class */ (function () {
+    function ChangePasswordComponent(userService, formBuilder) {
+        this.userService = userService;
+        this.formBuilder = formBuilder;
+    }
+    ChangePasswordComponent.prototype.ngOnInit = function () {
+        this.setupForm();
+    };
+    ChangePasswordComponent.prototype.setupForm = function () {
+        this.changePasswordForm = this.formBuilder.group({
+            currentPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.selectedUser.password),
+            newPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](),
+            confirmPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](),
+        });
+    };
+    ChangePasswordComponent.prototype.onSubmit = function () {
+        // this.userService.updateUser
+    };
+    ChangePasswordComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-change-password',
+            template: __webpack_require__(/*! raw-loader!./change-password.component.html */ "./node_modules/raw-loader/index.js!./src/app/change-password/change-password.component.html"),
+            styles: [__webpack_require__(/*! ./change-password.component.css */ "./src/app/change-password/change-password.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])
+    ], ChangePasswordComponent);
+    return ChangePasswordComponent;
 }());
 
 
@@ -807,8 +885,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../authentication.service */ "./src/app/authentication.service.ts");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _update_user_update_user_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../update-user/update-user.component */ "./src/app/update-user/update-user.component.ts");
+/* harmony import */ var _change_password_change_password_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../change-password/change-password.component */ "./src/app/change-password/change-password.component.ts");
 
 
+
+//can import both classes and interfaces in the same import statement
 
 
 
@@ -835,11 +916,10 @@ var ProfileComponent = /** @class */ (function () {
     ProfileComponent.prototype.updateUser = function (user) {
         var ref = this.modalService.open(_update_user_update_user_component__WEBPACK_IMPORTED_MODULE_4__["UpdateUserComponent"], { centered: true, windowClass: "update-user-modal" });
         ref.componentInstance.selectedUser = user;
-        ref.result.then(function (yes) {
-            console.log("Submit clicked");
-        }, function (cancel) {
-            console.log('Cancel clicked');
-        });
+    };
+    ProfileComponent.prototype.changePassword = function (user) {
+        var ref = this.modalService.open(_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_5__["ChangePasswordComponent"], { centered: true, windowClass: "change-password-modal" });
+        ref.componentInstance.selectedUser = user;
     };
     ProfileComponent.prototype.ngOnInit = function () {
         // this.authGuard.canActivate();

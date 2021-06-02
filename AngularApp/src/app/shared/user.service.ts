@@ -47,6 +47,10 @@ export class UserService {
     return this.http.put(`${this.apiURL}/${user._id}`, user) 
   }
 
+  changePassword(user: User, password: string){
+    return this.http.put(`${this.apiURL}/${user._id}/changePassword`, {"user": user, "newPassword": password});
+  }
+
   getUserByUsername(uName: string){
     return this.http.get<any[]>(`${this.usersURL}/${uName}`);
   }
