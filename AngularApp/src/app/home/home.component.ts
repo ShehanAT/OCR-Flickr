@@ -10,6 +10,12 @@ export class HomeComponent implements OnInit {
   constructor(private auth: AuthenticationService) { }
 
   ngOnInit() {
+    console.log(sessionStorage);
+    if(!sessionStorage.length){
+      this.auth.logout();
+    }else{
+      console.log('user logged in');
+    }
   }
 
 }

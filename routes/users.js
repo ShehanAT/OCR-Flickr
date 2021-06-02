@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.put('/:id/changePassword', (req, res) => {
-	console.log(req.body);
+	console.log(req.body.newPassword);
 	return res.status(200).send({'status': 'success'});
 });
 

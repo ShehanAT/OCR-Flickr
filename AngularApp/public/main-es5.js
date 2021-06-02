@@ -64,7 +64,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"changePasswordForm\" *ngIf=\"changePasswordForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"\">\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"password\" class=\"col-form-label col-sm-2 text-right\">Current Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"currentPassword\" formControlName=\"currentPassword\"/>\n              <!-- <div *ngIf=\"formErrors.password\" class=\"alert alert-danger\">\n                {{ formErrors.username }}\n             \n              </div> -->\n              <!-- <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched) && username.errors?.uniqueUsernameUpdate\">\n                Username is already taken! Please pick a different one...\n              </div> -->\n   \n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">New Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"newPassword\" formControlName=\"newPassword\" />\n              <!-- <div *ngIf=\"formErrors.emailAddress\" class=\"alert alert-danger\">\n                {{ formErrors.emailAddress }}\n              </div> -->\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Confirm Password:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"text\" class=\"form-control\" name=\"confirmPassword\" formControlName=\"confirmPassword\" />\n            <!-- <div *ngIf=\"formErrors.fullName\" class=\"alert alert-danger\">\n              {{ formErrors.fullName }}\n            </div> -->\n        </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"!changePasswordForm.valid\" class=\"btn btn-primary mr-2\" type=\"submit\">Update</button>\n      <button [disabled]=\"isLoading\" class=\"btn btn-danger mr-2\" id=\"update-user-modal-close\" type=\"button\">Cancel</button>\n    </div>\n  </div>\n</form>"
+module.exports = "<form [formGroup]=\"changePasswordForm\" *ngIf=\"changePasswordForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"\">\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"password\" class=\"col-form-label col-sm-2 text-right\">Current Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"currentPassword\" formControlName=\"currentPassword\"/>\n              <!-- <div *ngIf=\"formErrors.password\" class=\"alert alert-danger\">\n                {{ formErrors.username }}\n             \n              </div> -->\n              <!-- <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched) && username.errors?.uniqueUsernameUpdate\">\n                Username is already taken! Please pick a different one...\n              </div> -->\n   \n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">New Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"newPassword\" formControlName=\"newPassword\" />\n              <!-- <div *ngIf=\"formErrors.emailAddress\" class=\"alert alert-danger\">\n                {{ formErrors.emailAddress }}\n              </div> -->\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Confirm Password:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"password\" class=\"form-control\" name=\"confirmPassword\" formControlName=\"confirmPassword\" />\n            <!-- <div *ngIf=\"formErrors.fullName\" class=\"alert alert-danger\">\n              {{ formErrors.fullName }}\n            </div> -->\n        </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"!changePasswordForm.valid\" class=\"btn btn-primary mr-2\" type=\"submit\">Update</button>\n      <button [disabled]=\"isLoading\" class=\"btn btn-danger mr-2\" id=\"update-user-modal-close\" type=\"button\">Cancel</button>\n    </div>\n  </div>\n</form>"
 
 /***/ }),
 
@@ -624,8 +624,18 @@ var ChangePasswordComponent = /** @class */ (function () {
             confirmPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](),
         });
     };
+    Object.defineProperty(ChangePasswordComponent.prototype, "password", {
+        get: function () { return this.changePasswordForm.get('newPassword'); },
+        enumerable: true,
+        configurable: true
+    });
     ChangePasswordComponent.prototype.onSubmit = function () {
-        // this.userService.updateUser
+        // var changePasswordData = [this.selectedUser, this.password]
+        this.userService.changePassword(this.selectedUser, this.password.value).subscribe(function (data) {
+            console.log(data);
+        }, function (error) {
+            console.log(error);
+        });
     };
     ChangePasswordComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -768,6 +778,13 @@ var HomeComponent = /** @class */ (function () {
         this.auth = auth;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        console.log(sessionStorage);
+        if (!sessionStorage.length) {
+            this.auth.logout();
+        }
+        else {
+            console.log('user logged in');
+        }
     };
     HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1742,7 +1759,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function uniqueUsernameUpdateValidator(userService) {
     return function (c) {
-        var currentUsername = JSON.parse(sessionStorage.getItem("currentUser"))["username"];
+        try {
+            var currentUsername = JSON.parse(sessionStorage.getItem("currentUser"))["username"];
+        }
+        catch (err) {
+            console.log(err);
+        }
         return userService.getUserByUsername(c.value)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(function (user) {
             if (user.length > 0) {
@@ -1874,6 +1896,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.updateUser = function (user) {
         return this.http.put(this.apiURL + "/" + user._id, user);
     };
+    UserService.prototype.changePassword = function (user, password) {
+        return this.http.put(this.apiURL + "/" + user._id + "/changePassword", { "user": user, "newPassword": password });
+    };
     UserService.prototype.getUserByUsername = function (uName) {
         return this.http.get(this.usersURL + "/" + uName);
     };
@@ -1990,6 +2015,7 @@ var UpdateUserComponent = /** @class */ (function () {
     });
     UpdateUserComponent.prototype.ngOnInit = function () {
         try {
+            console.log(this.selectedUser);
             this.setupForm();
             this.formReady = true;
         }

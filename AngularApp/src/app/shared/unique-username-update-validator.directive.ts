@@ -4,7 +4,11 @@ import { map } from 'rxjs/operators';
 
 export function uniqueUsernameUpdateValidator(userService: UserService): AsyncValidatorFn{
     return (c: AbstractControl): {[key: string]: boolean} | any => {
-        var currentUsername = JSON.parse(sessionStorage.getItem("currentUser"))["username"];
+        try{
+            var currentUsername = JSON.parse(sessionStorage.getItem("currentUser"))["username"];
+        }catch(err){
+            console.log(err);
+        }
         return userService.getUserByUsername(c.value)
             .pipe(
                 map(user => {

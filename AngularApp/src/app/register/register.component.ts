@@ -83,7 +83,8 @@ export class RegisterComponent implements OnInit {
     fullName: this.registerForm.value.fullName,
     emailAddress: this.registerForm.value.emailAddress,
     age: this.registerForm.value.age
-   }; this.auth.register(this.credentials).subscribe(() => {
+   }; 
+   this.auth.register(this.credentials).subscribe(() => {
         this.router.navigateByUrl('/profile');//redirect to profile page once 
         //registered
         }, (err) => {

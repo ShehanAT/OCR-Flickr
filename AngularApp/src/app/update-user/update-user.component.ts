@@ -76,6 +76,7 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(){
     try{
+      console.log(this.selectedUser);
       this.setupForm()
       this.formReady = true;
     }catch(err){
