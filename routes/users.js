@@ -9,8 +9,7 @@ require('../api/models/user');
 const User = mongoose.model('User');
 var mongojs = require('mongojs');
 var db = require('../db.js');
-
-
+const crypto = require('crypto');
 router.get('/', (req, res) => {
 	console.log("passing user index route");
 	User.find((err, record) =>{
@@ -63,19 +62,31 @@ router.put('/:id', (req, res) => {
 router.put('/:id/changePassword', (req, res) => {
 	console.log(req.body);
 	newPassword = req.body.newPassword;
+	currentPassword = req.body.currentPassword;
 	User.findById(req.body.user._id, function(err, user){
 		if(err){
 			console.log('Error in user update' + JSON.stringify(err, undefined, 2));
 			return res.status(500).send('No user found to update!');
 		}
-		console.log(user);
-		if(newPassword){
-			user.setPassword(req.body.newPassword);
-			user.save()
-			return res.status(200).send(user.toJSON())
-		}else{
-			return res.status(500).send('New password not sent!');
-		}
+		if(currentPassword){
+			var currentPasswordHash = crypto.pbkdf2Sync(currentPassword, user.salt, 1000, 64, 'sha512').toString('hex');
+			console.log("currentPassword hash: " + currentPasswordHash);
+			console.log("db hash: " + user.hash)
+			var isMatch = currentPasswordHash == user.hash ? true : false;
+			if(isMatch){
+				console.log('current password is a match!');
+				if(newPassword){
+					user.setPassword(req.body.newPassword);
+					user.save()
+					return res.status(200).send(user.toJSON())
+				}
+				else{
+					return res.status(500).json({status: 501, message: 'New password not provided!'});
+				}
+			}else{
+				return res.status(500).json({status: 500, message:'Existing password is incorrect!'});
+			}
+		}	
 	});	
 });
 

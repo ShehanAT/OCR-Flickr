@@ -45,6 +45,7 @@
     "@ngneat/hot-toast": "^2.0.2",
     "@ngneat/overview": "^2.0.2",
     "angular-material": "^1.2.2",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "boostrap": "^2.0.0",
     "bower": "^1.8.12",
