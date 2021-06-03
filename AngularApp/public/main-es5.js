@@ -64,7 +64,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"changePasswordForm\" *ngIf=\"changePasswordForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"\">\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"password\" class=\"col-form-label col-sm-2 text-right\">Current Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"currentPassword\" formControlName=\"currentPassword\"/>\n              <!-- <div *ngIf=\"formErrors.password\" class=\"alert alert-danger\">\n                {{ formErrors.username }}\n             \n              </div> -->\n              <!-- <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched) && username.errors?.uniqueUsernameUpdate\">\n                Username is already taken! Please pick a different one...\n              </div> -->\n   \n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">New Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"newPassword\" formControlName=\"newPassword\" />\n              <!-- <div *ngIf=\"formErrors.emailAddress\" class=\"alert alert-danger\">\n                {{ formErrors.emailAddress }}\n              </div> -->\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Confirm Password:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"password\" class=\"form-control\" name=\"confirmPassword\" formControlName=\"confirmPassword\" />\n            <!-- <div *ngIf=\"formErrors.fullName\" class=\"alert alert-danger\">\n              {{ formErrors.fullName }}\n            </div> -->\n        </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"!changePasswordForm.valid\" class=\"btn btn-primary mr-2\" type=\"submit\">Update</button>\n      <button [disabled]=\"isLoading\" class=\"btn btn-danger mr-2\" id=\"update-user-modal-close\" type=\"button\">Cancel</button>\n    </div>\n  </div>\n</form>"
+module.exports = "<form [formGroup]=\"changePasswordForm\" *ngIf=\"changePasswordForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"\">\n    <div class=\"card-header bg-primary text-white\">\n      <h3>Update User</h3>\n    </div>\n    <div class=\"card-body\">\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"password\" class=\"col-form-label col-sm-2 text-right\">Current Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"currentPassword\" formControlName=\"currentPassword\"/>\n              <!-- <div *ngIf=\"formErrors.password\" class=\"alert alert-danger\">\n                {{ formErrors.username }}\n             \n              </div> -->\n              <!-- <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched) && username.errors?.uniqueUsernameUpdate\">\n                Username is already taken! Please pick a different one...\n              </div> -->\n   \n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n          <label for=\"email\" class=\"col-form-label col-sm-2 text-right\">New Password:</label>\n          <div class=\"col-sm-5\">\n              <input type=\"password\" class=\"form-control\" name=\"newPassword\" formControlName=\"newPassword\" />\n              <div class=\"text-danger\" *ngIf=\"newPassword?.invalid && (newPassword.dirty || newPassword.touched)\">\n                <div *ngIf=\"newPassword?.errors['required']\">Password is required</div>\n              </div>\n          </div>\n      </div>\n      <div class=\"form-group row d-flex justify-content-center align-items-center\">\n        <label for=\"fullName\" class=\"col-form-label col-sm-2 text-right\">Confirm Password:</label>\n        <div class=\"col-sm-5\">\n            <input type=\"password\" class=\"form-control\" name=\"confirmPassword\" formControlName=\"confirmPassword\"  compare=\"newPassword\"/>\n            <div class=\"text-danger\" *ngIf=\"confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)\">\n              <div *ngIf=\"confirmPassword.errors['required']\">Confirm password is required</div>\n              <div *ngIf=\"confirmPassword.errors['compare']\">Passwords do not match</div>\n            </div>\n            \n            <!-- <div class=\"alert alert-danger\" *ngIf=\"changePasswordForm.controls.confirmPassword?.invalid && (confirmPassword.dirty || confirmPassword.touched) && confirmPassword.errors?.compare\">\n              Passwords do not match!\n            </div> -->\n        </div>\n      </div>\n    </div>\n    <div class=\"card-footer\">\n      <button [disabled]=\"!changePasswordForm.valid\" class=\"btn btn-primary mr-2\" type=\"submit\">Update</button>\n      <button [disabled]=\"isLoading\" class=\"btn btn-danger mr-2\" id=\"update-user-modal-close\" type=\"button\">Cancel</button>\n    </div>\n  </div>\n</form>"
 
 /***/ }),
 
@@ -130,7 +130,7 @@ module.exports = "<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container\">\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<br>\r\n<br>\r\n\r\n<div class=\"container\">\r\n <div class=\"row\">  \r\n  <div class=\"col-md-6\">\r\n    <h1>Register</h1> \r\n    <p class=\"lead\">If you are already a member please <a routerLink=\"/login\">log in</a></p>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\r\n    \r\n        <label for=\"username\" class=\"control-label\">Username:</label>\r\n        <input type=\"text\" class=\"form-control\" formControlName=\"username\" placeholder=\"Enter username\" >\r\n       \r\n     \r\n        <div class=\"text-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched)\">\r\n        Username already exists</div>\r\n      \r\n     \r\n      \r\n        \r\n        <br>\r\n        <label for=\"fullName\" class=\"control-label\">FullName:  </label>\r\n        <input type=\"text\" \r\n               class=\"form-control\" \r\n               name=\"fullName\" \r\n               placeholder=\"Enter fullName\"\r\n               required \r\n               formControlName=\"fullName\"\r\n               required>\r\n        <div class=\"text-danger\" *ngIf=\"fullName?.invalid && (fullName.dirty || fullName.touched)\">\r\n              <div *ngIf=\"fullName?.errors['required']\">Fullname is required</div>\r\n            \r\n        </div>\r\n        \r\n        <label for=\"emailAddress\" class=\"control-label\">Email Address: </label>\r\n        <input type=\"text\" \r\n               class=\"form-control\" \r\n               name=\"emailAddress\" \r\n               placeholder=\"Enter Email\"\r\n               required \r\n               formControlName=\"emailAddress\"\r\n               >\r\n        \r\n         <div class=\"text-danger\" *ngIf=\"email?.invalid && (email.dirty || email.touched)\">\r\n              <div *ngIf=\"email?.errors['required']\">Email is required</div>\r\n             <div *ngIf=\"email?.errors['email']\">Enter valid email</div>\r\n            \r\n        </div>\r\n        <label for=\"age\" class=\"control-label\">Age:</label>\r\n        <input type=\"number\" \r\n               class=\"form-control\" \r\n               name=\"age\" \r\n               placeholder=\"Enter Age\"\r\n               required\r\n               formControlName=\"age\">\r\n        <div class=\"text-danger\" *ngIf=\"age?.invalid && (age.dirty || age.touched)\">\r\n              <div *ngIf=\"age?.errors['required']\">Age is required</div>\r\n            \r\n        </div>\r\n        <label for=\"password\" class=\"control-label\">Password:</label>\r\n        <input type=\"password\"\r\n                class=\"form-control\"\r\n               placeholder=\"Enter new password\"\r\n                formControlName=\"password\">\r\n             <div class=\"text-danger\" *ngIf=\"password?.invalid && (password.dirty || password.touched)\">\r\n              <div *ngIf=\"password?.errors['required']\">Password is required</div>\r\n            \r\n        </div>\r\n            <label for=\"confirmPassword\" class=\"control-label\">Confirm Password:</label>\r\n            <input type=\"password\"\r\n                   placeholder=\"confirm Password\"\r\n                   class=\"form-control\"\r\n                  \r\n                formControlName=\"confirmPassword\" compare=\"password\"> \r\n            <div class=\"text-danger\" *ngIf=\"confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)\">\r\n                <div *ngIf=\"confirmPassword.errors['required']\">Confirm password is required</div>\r\n                <div *ngIf=\"confirmPassword.errors['compare']\">Passwords do not match</div>\r\n                </div>\r\n      \r\n      <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!registerForm.valid\">Register!</button>\r\n      </form>   \r\n     </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<br>\r\n<br>\r\n<br>\r\n\r\n<div class=\"container\">\r\n <div class=\"row\">  \r\n  <div class=\"col-md-6\">\r\n    <h1>Register</h1> \r\n    <p class=\"lead\">If you are already a member please <a routerLink=\"/login\">log in</a></p>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\r\n    \r\n        <label for=\"username\" class=\"control-label\">Username:</label>\r\n        <input type=\"text\" class=\"form-control\" formControlName=\"username\" placeholder=\"Enter username\" >\r\n       \r\n     \r\n        <div class=\"text-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched)\">\r\n        Username already exists</div>\r\n      \r\n     \r\n      \r\n        \r\n        <br>\r\n        <label for=\"fullName\" class=\"control-label\">FullName:  </label>\r\n        <input type=\"text\" \r\n               class=\"form-control\" \r\n               name=\"fullName\" \r\n               placeholder=\"Enter fullName\"\r\n               required \r\n               formControlName=\"fullName\"\r\n               required>\r\n        <div class=\"text-danger\" *ngIf=\"fullName?.invalid && (fullName.dirty || fullName.touched)\">\r\n              <div *ngIf=\"fullName?.errors['required']\">Fullname is required</div>\r\n            \r\n        </div>\r\n        \r\n        <label for=\"emailAddress\" class=\"control-label\">Email Address: </label>\r\n        <input type=\"text\" \r\n               class=\"form-control\" \r\n               name=\"emailAddress\" \r\n               placeholder=\"Enter Email\"\r\n               required \r\n               formControlName=\"emailAddress\"\r\n               >\r\n        \r\n         <div class=\"text-danger\" *ngIf=\"email?.invalid && (email.dirty || email.touched)\">\r\n              <div *ngIf=\"email?.errors['required']\">Email is required</div>\r\n             <div *ngIf=\"email?.errors['email']\">Enter valid email</div>\r\n            \r\n        </div>\r\n        <label for=\"age\" class=\"control-label\">Age:</label>\r\n        <input type=\"number\" \r\n               class=\"form-control\" \r\n               name=\"age\" \r\n               placeholder=\"Enter Age\"\r\n               required\r\n               formControlName=\"age\">\r\n        <div class=\"text-danger\" *ngIf=\"age?.invalid && (age.dirty || age.touched)\">\r\n              <div *ngIf=\"age?.errors['required']\">Age is required</div>\r\n            \r\n        </div>\r\n        <label for=\"password\" class=\"control-label\">Password:</label>\r\n        <input type=\"password\"\r\n                class=\"form-control\"\r\n               placeholder=\"Enter new password\"\r\n                formControlName=\"password\">\r\n             <div class=\"text-danger\" *ngIf=\"password?.invalid && (password.dirty || password.touched)\">\r\n              <div *ngIf=\"password?.errors['required']\">Password is required</div>\r\n             </div>\r\n            <label for=\"confirmPassword\" class=\"control-label\">Confirm Password:</label>\r\n            <input type=\"password\"\r\n                   placeholder=\"confirm Password\"\r\n                   class=\"form-control\"\r\n                  \r\n                formControlName=\"confirmPassword\" compare=\"password\"> \r\n            <div class=\"text-danger\" *ngIf=\"confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)\">\r\n                <div *ngIf=\"confirmPassword.errors['required']\">Confirm password is required</div>\r\n                <div *ngIf=\"confirmPassword.errors['compare']\">Passwords do not match</div>\r\n            </div>\r\n      \r\n      <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!registerForm.valid\">Register!</button>\r\n      </form>   \r\n     </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -605,6 +605,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/user.service */ "./src/app/shared/user.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _shared_confirm_equal_validator_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/confirm-equal-validator.directive */ "./src/app/shared/confirm-equal-validator.directive.ts");
+
 
 
 
@@ -618,21 +620,34 @@ var ChangePasswordComponent = /** @class */ (function () {
         this.setupForm();
     };
     ChangePasswordComponent.prototype.setupForm = function () {
+        console.log('passing');
         this.changePasswordForm = this.formBuilder.group({
-            currentPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.selectedUser.password),
-            newPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](),
-            confirmPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](),
+            currentPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required
+            ]),
+            newPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required
+            ]),
+            confirmPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required,
+                Object(_shared_confirm_equal_validator_directive__WEBPACK_IMPORTED_MODULE_4__["compareValidator"])('newPassword')
+            ]),
         });
     };
-    Object.defineProperty(ChangePasswordComponent.prototype, "password", {
+    Object.defineProperty(ChangePasswordComponent.prototype, "newPassword", {
         get: function () { return this.changePasswordForm.get('newPassword'); },
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ChangePasswordComponent.prototype, "confirmPassword", {
+        get: function () { return this.changePasswordForm.get('confirmPassword'); },
+        enumerable: true,
+        configurable: true
+    });
     ChangePasswordComponent.prototype.onSubmit = function () {
-        // var changePasswordData = [this.selectedUser, this.password]
-        this.userService.changePassword(this.selectedUser, this.password.value).subscribe(function (data) {
-            console.log(data);
+        this.userService.changePassword(this.selectedUser, this.newPassword.value).subscribe(function (user) {
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            window.location.reload();
         }, function (error) {
             console.log(error);
         });
@@ -778,7 +793,6 @@ var HomeComponent = /** @class */ (function () {
         this.auth = auth;
     }
     HomeComponent.prototype.ngOnInit = function () {
-        console.log(sessionStorage);
         if (!sessionStorage.length) {
             this.auth.logout();
         }
@@ -2050,15 +2064,12 @@ var UpdateUserComponent = /** @class */ (function () {
                     if (field == "username") {
                         console.log(control);
                     }
-                    // if(this.username.invalid && key != 'required'){
-                    //   // console.log(messages['uniqueUsernameUpdate']);
-                    //   console.log(field);
-                    //   this.formErrors[field] += messages['uniqueUsernameUpdate'];
-                    // }else{
-                    this.formErrors[field] += messages[key] + ' ';
-                    // }
-                    // console.log("field " + field);
-                    // console.log("key " + key)
+                    if (this.username.invalid && key != 'required') {
+                        this.formErrors[field] += messages['uniqueUsernameUpdate'];
+                    }
+                    else {
+                        this.formErrors[field] += messages[key] + ' ';
+                    }
                 }
             }
         }

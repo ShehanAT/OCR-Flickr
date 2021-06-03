@@ -61,12 +61,14 @@ router.put('/:id', (req, res) => {
 });
 
 router.put('/:id/changePassword', (req, res) => {
+	console.log(req.body);
 	newPassword = req.body.newPassword;
 	User.findById(req.body.user._id, function(err, user){
 		if(err){
 			console.log('Error in user update' + JSON.stringify(err, undefined, 2));
 			return res.status(500).send('No user found to update!');
 		}
+		console.log(user);
 		if(newPassword){
 			user.setPassword(req.body.newPassword);
 			user.save()
