@@ -21,7 +21,6 @@ const ctrlGetUserByUsername = require('../controllers/authentication').getUserBy
 //profile
 
 router.get('/profile', auth, ctrlProfile.profileRead);//auth is the middleware used for authentication
-//router.get('/getUsers/:uName', ctrlGetUserByUsername);
 router.get('/getUsers', function(req, res, next){
     console.log('passing getUsers route');
     res.json({'passing': 'success'});

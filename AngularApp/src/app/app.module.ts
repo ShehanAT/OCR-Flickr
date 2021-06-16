@@ -25,7 +25,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CompareValidatorDirective } from './shared/compare-validator.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { HotToastModule } from '@ngneat/hot-toast';
 import { ToastrModule } from 'ngx-toastr';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 

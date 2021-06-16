@@ -368,7 +368,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { HotToastModule } from '@ngneat/hot-toast';
 
 
 const routes = [
@@ -597,15 +596,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/user.service */ "./src/app/shared/user.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _shared_confirm_equal_validator_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/confirm-equal-validator.directive */ "./src/app/shared/confirm-equal-validator.directive.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js");
+
 
 
 
 
 
 let ChangePasswordComponent = class ChangePasswordComponent {
-    constructor(userService, formBuilder) {
+    constructor(userService, formBuilder, toastService) {
         this.userService = userService;
         this.formBuilder = formBuilder;
+        this.toastService = toastService;
     }
     ngOnInit() {
         this.setupForm();
@@ -629,11 +631,18 @@ let ChangePasswordComponent = class ChangePasswordComponent {
     get newPassword() { return this.changePasswordForm.get('newPassword'); }
     get confirmPassword() { return this.changePasswordForm.get('confirmPassword'); }
     onSubmit() {
-        this.userService.changePassword(this.selectedUser, this.newPassword.value).subscribe(user => {
-            sessionStorage.setItem('currentUser', JSON.stringify(user));
+        this.userService.changePassword(this.selectedUser, this.newPassword.value, this.currentPassword.value).subscribe(res => {
+            // sessionStorage.setItem('currentUser', JSON.stringify(res.));
             window.location.reload();
         }, (error) => {
-            console.log(error);
+            try {
+                this.toastService.error(error.error.message);
+                // console.log("Error message is: " + error.error.message);
+                console.log(error);
+            }
+            catch (err) {
+                console.log(err);
+            }
         });
     }
 };
@@ -644,7 +653,8 @@ ChangePasswordComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./change-password.component.css */ "./src/app/change-password/change-password.component.css")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])
+        _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
+        ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"]])
 ], ChangePasswordComponent);
 
 
@@ -1843,8 +1853,8 @@ let UserService = class UserService {
     updateUser(user) {
         return this.http.put(`${this.apiURL}/${user._id}`, user);
     }
-    changePassword(user, password) {
-        return this.http.put(`${this.apiURL}/${user._id}/changePassword`, { "user": user, "newPassword": password });
+    changePassword(user, newPassword, currentPassword) {
+        return this.http.put(`${this.apiURL}/${user._id}/changePassword`, { "user": user, "newPassword": newPassword, "currentPassword": currentPassword });
     }
     getUserByUsername(uName) {
         return this.http.get(`${this.usersURL}/${uName}`);
